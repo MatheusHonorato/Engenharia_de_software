@@ -61,6 +61,9 @@ Route::group(['middleware' => 'admin_auth'], function(){
 
 	Route::post('admin/home/areas/criar', 'Admin\HomeController@areasStore')->name('admin.home.cadastro.areas.store');
 
+	Route::post('admin/home/areas/update', 'Admin\HomeController@areasUpdate')->name('admin.home.cadastro.areas.update');
+
+
 	//perrfil
 	Route::get('admin/home/perfil', 'Admin\HomeController@perfilIndex')->name('admin.home.perfil.index');
 	Route::post('admin/home/perfil', 'Admin\HomeController@perfilIndex')->name('admin.home.perfil.index.update');
@@ -84,6 +87,9 @@ Route::group(['middleware' => 'admin_auth'], function(){
 	Route::get('admin/home/categorias/criar', 'Admin\HomeController@categoriasCreate')->name('admin.home.cadastro.categorias.criar');
 
 	Route::post('admin/home/categorias/criar', 'Admin\HomeController@categoriasStore')->name('admin.home.cadastro.categorias.store');
+
+	Route::post('admin/home/categorias/update', 'Admin\HomeController@categoriasUpdate')->name('admin.home.cadastro.categorias.update');
+
 	//
 
 	//cursos

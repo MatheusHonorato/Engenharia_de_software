@@ -85,7 +85,16 @@ class HomeController extends Controller
     public function areasStore(Request $request)
     {
         $area = new Area;
-        $area->name = $request->area;
+        $area->name = $request->name;
+        $area->save();
+
+        return redirect()->route('admin.home.cadastro.areas.index');
+    }
+
+    public function areasUpdate(Request $request)
+    {
+        $area = Area::find($request->id);
+        $area->name = $request->name;
         $area->save();
 
         return redirect()->route('admin.home.cadastro.areas.index');
@@ -249,6 +258,15 @@ class HomeController extends Controller
     {
         $tipo = new Tipo;
         $tipo->name = $request->categoria;
+        $tipo->save();
+
+        return redirect()->route('admin.home.cadastro.categorias.index');
+    }
+
+    public function categoriasUpdate(Request $request)
+    {
+        $tipo = Tipo::find($request->id);
+        $tipo->name = $request->name;
         $tipo->save();
 
         return redirect()->route('admin.home.cadastro.categorias.index');

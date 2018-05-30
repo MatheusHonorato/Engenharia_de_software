@@ -12,19 +12,30 @@
                         <thead>
                             <tr>
                               <th>Nome</th>
-                              <th style="text-align: right;">Remover</th>
+                              <th>Editar</th>
+                              <th>Remover</th>
                               <th><a href="{{ route('admin.home.cadastro.categorias.criar') }}"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></a></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($tipos as $tipo)
                             <tr>
-                                <th scope="row">{{ $tipo->name }}</th>
+                                <th>
+                                    <form action="{{ route('admin.home.cadastro.categorias.update') }}" method="POST">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id" value="{{ $tipo->id }}">
+                                        <input type="text" class="form-control" name="name" value="{{ $tipo->name }}">
+                                </th>
+                                    
+                                <th>
+                                    <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
+                                    </form>
+                                </th>
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.categorias.excluir') }}" method="POST">
                                         <input type="hidden" name="id" value="{{ $tipo->id }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                        <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                     </form>
                                 </td>
                                 <td>
