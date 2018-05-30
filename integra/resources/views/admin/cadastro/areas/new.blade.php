@@ -20,7 +20,7 @@
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <td>
-                                            <input type="text" name="area" id="area" class="form-control" placeholder="Nome" required="" autofocus="">
+                                            <input type="text" name="name" id="area" class="form-control" placeholder="Nome" required="" autofocus="">
                                         </td>
 
                                         <td>

@@ -58,7 +58,7 @@ class HomeController extends Controller
         $name = substr($user->name, 0, 5); 
 
         $areas = Area::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.cadastro.areas.areas-index', compact('areas','name'));
+        return view('admin.cadastro.areas.index', compact('areas','name'));
     }
 
     public function areasExcluir(Request $request)
@@ -79,7 +79,7 @@ class HomeController extends Controller
         $user = Admin::find($id); 
         $name = substr($user->name, 0, 5); 
        
-        return view('admin.cadastro.areas.areas-new',compact('name'));
+        return view('admin.cadastro.areas.new',compact('name'));
     }
 
     public function areasStore(Request $request)
@@ -142,6 +142,15 @@ class HomeController extends Controller
     {
         $habilidade = new Habilidade;
         $habilidade->name = $request->habilidade;
+        $habilidade->save();
+
+        return redirect()->route('admin.home.cadastro.habilidades.index');
+    }
+
+    public function habilidadesUpdate(Request $request)
+    {
+        $habilidade = Habilidade::find($request->id);
+        $habilidade->name = $request->name;
         $habilidade->save();
 
         return redirect()->route('admin.home.cadastro.habilidades.index');

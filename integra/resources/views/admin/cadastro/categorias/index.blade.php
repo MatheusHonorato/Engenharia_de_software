@@ -33,8 +33,8 @@
                                 </th>
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.categorias.excluir') }}" method="POST">
-                                        <input type="hidden" name="id" value="{{ $tipo->id }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id" value="{{ $tipo->id }}">
                                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                     </form>
                                 </td>
