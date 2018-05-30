@@ -9,13 +9,25 @@ use App\Emp;
 use App\PerfilAluno;
 use Auth;
 use App\Area;
-use App\Categoria;
+use App\Tipo;
 use App\Admin;
 use App\Habilidade;
 use App\Curso;
 
 class HomeController extends Controller
 {
+
+    // - home
+    public function index()
+    {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+        return view('admin.home', compact('user','name'));
+    }
 
     //PERFIL USUARIO
 
@@ -26,9 +38,11 @@ class HomeController extends Controller
 
         $id = $var['id'];
 
-        $user = Admin::find($id);  
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
         return view('admin.perfil.perfil', compact('user'));
     }
+
 
 
     //ÁREAS
@@ -36,8 +50,15 @@ class HomeController extends Controller
     // - index
     public function areasIndex()
     {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
         $areas = Area::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.cadastro.areas.areas-index', compact('areas'));
+        return view('admin.cadastro.areas.areas-index', compact('areas','name'));
     }
 
     public function areasExcluir(Request $request)
@@ -50,9 +71,15 @@ class HomeController extends Controller
     }
 
      public function areasCreate()
-    {
+    {   
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
        
-        return view('admin.cadastro.areas.areas-new');
+        return view('admin.cadastro.areas.areas-new',compact('name'));
     }
 
     public function areasStore(Request $request)
@@ -69,9 +96,16 @@ class HomeController extends Controller
 
     // - index
     public function habilidadesIndex()
-    {
+    {   
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
         $habilidades = Habilidade::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.cadastro.habilidades.index', compact('habilidades'));
+        return view('admin.cadastro.habilidades.index', compact('habilidades','name'));
     }
 
     public function habilidadesExcluir(Request $request)
@@ -85,8 +119,14 @@ class HomeController extends Controller
 
      public function habilidadesCreate()
     {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
        
-        return view('admin.cadastro.habilidades.new');
+        return view('admin.cadastro.habilidades.new', compact('name'));
     }
 
     public function habilidadesStore(Request $request)
@@ -105,14 +145,29 @@ class HomeController extends Controller
     // - index
     public function notificacoesIndexAluno()
     {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
         $users = User::where('status','=','0')->get();
-        return view('admin.notificacoes.notificacoes-aluno', compact('users'));
+
+        return view('admin.notificacoes.notificacoes-aluno', compact('users','name'));
     }
 
     public function notificacoesIndexEmp()
     {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
         $emps = Emp::where('status','=','0')->get();
-        return view('admin.notificacoes.notificacoes-emp', compact('emps'));
+        return view('admin.notificacoes.notificacoes-emp', compact('emps','name'));
     }
 
     //
@@ -162,20 +217,109 @@ class HomeController extends Controller
     }
     //
 
+    // CATEGORIAS
+
+    public function categoriasIndex()
+    {   
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
+        $tipos = Tipo::paginate(5);
+
+        return view('admin.cadastro.categorias.index', compact('name','tipos'));
+    }
+
+    public function categoriasCreate()
+    {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
+        return view('admin.cadastro.categorias.new', compact('name'));
+    }
+
+    public function categoriasStore(Request $request)
+    {
+        $tipo = new Tipo;
+        $tipo->name = $request->categoria;
+        $tipo->save();
+
+        return redirect()->route('admin.home.cadastro.categorias.index');
+    }
+
+    public function categoriasExcluir(Request $request)
+    {
+        $id = $request->id;
+        $tipo = Tipo::find($id);    
+        $tipo->delete();
+
+        return redirect()->route('admin.home.cadastro.categorias.index');
+    }
+
+    //
+
     // CURSOS
 
     // - index
     public function cursosIndex()
-    {
+
+    {   $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
         $cursos = Curso::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.cadastro.cursos.index', compact('cursos'));
+        return view('admin.cadastro.cursos.index', compact('cursos','name'));
     }
 
+    public function cursosCreate()
+    {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
+        $tipos = Tipo::all();
+        $areas = Area::all();
+
+        return view('admin.cadastro.cursos.new', compact('name','areas','tipos'));
+    }
+
+    public function cursosStore(Request $request)
+    {
+        $curso = new Curso;
+        $curso->name = $request->name;
+        $curso->id_area = $request->area;
+        $curso->id_tipo = $request->tipo;
+        $curso->save();
+
+        return redirect()->route('admin.home.cadastro.cursos.index');
+    }
+
+    //
 
     public function categoriasIndexCursos()
     {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+
+        $id = $var['id'];
+
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+
         $emps = Emp::where('status','=','0')->get();
-        return view('admin.notificacoes-emp', compact('emps'));
+        return view('admin.notificacoes-emp', compact('emps','name'));
     }
 
 }

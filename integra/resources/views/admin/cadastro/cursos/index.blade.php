@@ -16,8 +16,8 @@
                               <th>Categoria</th>
                               <th>Editar</th>
                               <th>Remover</th>
-                              <th><a href="{{ route('admin.home.cadastro.habilidades.criar') }}"><button type="submit" class="btn btn-primary pull-right">Categorias</button></a></th>
-                              <th><a href="{{ route('admin.home.cadastro.habilidades.criar') }}"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></a></th>
+                              <th><a href="{{ route('admin.home.cadastro.categorias.index') }}"><button type="submit" class="btn btn-primary pull-right">Categorias</button></a></th>
+                              <th><a href="{{ route('admin.home.cadastro.cursos.criar') }}"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></a></th>
                             </tr>
                         </thead>
                         <tbody>

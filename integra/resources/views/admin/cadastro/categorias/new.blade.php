@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Habilidades</div>
+                <div class="panel-heading">Categorias</div>
                 <div class="panel-body">
                     <table class="table">
                         <thead>
@@ -16,11 +16,11 @@
                         </thead>
                         <tbody>
                             <tr>
-                                    <form action="{{ route('admin.home.cadastro.habilidades.store') }}" method="POST">
+                                    <form action="{{ route('admin.home.cadastro.categorias.store') }}" method="POST">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                         <td>
-                                            <input type="text" name="habilidade" id="habilidade" class="form-control" placeholder="Nome" required="" autofocus="">
+                                            <input type="text" name="categoria" id="categoria" class="form-control" placeholder="Nome" required="" autofocus="">
                                         </td>
 
                                         <td>

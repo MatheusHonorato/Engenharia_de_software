@@ -37,9 +37,8 @@ Route::group(['middleware' => 'admin_guest'], function() {
 
 Route::group(['middleware' => 'admin_auth'], function(){
 	Route::post('admin/logout', 'AdminAuth\LoginController@logout')->name('admin.logout');
-	Route::get('admin/home', function(){
-  		return view('admin.home');
-	})->name('admin.home');
+	Route::get('admin/home', 'Admin\HomeController@index')->name('admin.home');
+
 
 	//notificações aluno
 	Route::get('admin/home/notificacoes/aluno', 'Admin\HomeController@notificacoesIndexAluno')->name('admin.home.notificacoes.aluno');
@@ -75,6 +74,16 @@ Route::group(['middleware' => 'admin_auth'], function(){
 	Route::get('admin/home/habilidades/criar', 'Admin\HomeController@habilidadesCreate')->name('admin.home.cadastro.habilidades.criar');
 
 	Route::post('admin/home/habilidades/criar', 'Admin\HomeController@habilidadesStore')->name('admin.home.cadastro.habilidades.store');
+	//
+
+	//categorias
+	Route::get('admin/home/categorias/lista', 'Admin\HomeController@categoriasIndex')->name('admin.home.cadastro.categorias.index');
+
+	Route::post('admin/home/categorias/excluir', 'Admin\HomeController@categoriasExcluir')->name('admin.home.cadastro.categorias.excluir');
+
+	Route::get('admin/home/categorias/criar', 'Admin\HomeController@categoriasCreate')->name('admin.home.cadastro.categorias.criar');
+
+	Route::post('admin/home/categorias/criar', 'Admin\HomeController@categoriasStore')->name('admin.home.cadastro.categorias.store');
 	//
 
 	//cursos

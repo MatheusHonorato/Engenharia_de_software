@@ -151,7 +151,7 @@ $(document).ready(function(){
       </li>
 
 
-            <li><a href="#about">Noticias</a></li>
+            <li><a href="#about">Feed</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notificações <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -172,7 +172,7 @@ $(document).ready(function(){
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-user" aria-hidden="true" style="padding-right: 5px;"></span>{{ Auth::guard('web_admin')->user()->name }} <span class="caret"></span>
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true" style="padding-right: 5px;"></span>{{ $name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -180,7 +180,7 @@ $(document).ready(function(){
                                         <a href="{{ route('admin.logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
+                                            Sair
                                         </a>
 
                                         <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" style="display: none;">
