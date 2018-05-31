@@ -24,8 +24,6 @@
                             @foreach ($cursos as $curso)
                             <tr>
                                 <th scope="row">{{ $curso->name }}</th>
-                                <th scope="row">{{ $curso->area }}</th>
-                                <th scope="row">{{ $curso->tipo }}</th>
 
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.cursos.edit') }}" method="POST">

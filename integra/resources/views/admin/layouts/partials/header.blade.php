@@ -125,20 +125,6 @@ $(document).ready(function(){
   </div>
 </li>
 
-            <!--fim teste -->
-          <!--
-            <form class="navbar-form navbar-left">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-              </div>
-              <button type="submit" class="btn btn-default">Pesquisar</button>
-            </form>
-          -->
-
-            <!--<li><a href="{{ route('admin.home.perfil.index') }}">Perfil</a></li>-->
-            
-
-
       <li class="dropdown">
     
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro <span class="caret"></span></a>
