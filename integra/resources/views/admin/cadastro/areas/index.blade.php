@@ -22,18 +22,6 @@
                         <tbody>
                             @foreach ($areas as $area)
 
-                            <script type="text/javascript">
-
-                                function update($id)
-
-                                {
-
-                                document.getElementById($id).submit();
-
-                                }
-
-                            </script>
-
                             <tr>
                                 <td>{{ $area->name }}</td>
 
@@ -87,5 +75,17 @@
 
 </div>
 @endsection
+
+<script type="text/javascript">
+
+                                function update($id)
+
+                                {
+
+                                document.getElementById($id).submit();
+
+                                }
+
+                            </script>
 
 @extends('admin.layouts.partials.footer')
