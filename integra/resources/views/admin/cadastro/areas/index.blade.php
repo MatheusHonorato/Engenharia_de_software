@@ -21,18 +21,50 @@
                         </thead>
                         <tbody>
                             @foreach ($areas as $area)
+
+                            <script type="text/javascript">
+
+                                function update($id)
+
+                                {
+
+                                document.getElementById($id).submit();
+
+                                }
+
+                            </script>
+
                             <tr>
+                                <td>{{ $area->name }}</td>
+
                                 <th scope="row">
-                                    <form action="{{ route('admin.home.cadastro.areas.update') }}" method="POST">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="id" value="{{ $area->id }}">
-                                        <input type="text" class="form-control" name="name" value="{{ $area->name }}">
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal{{ $area->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                                    <h4 class="modal-title">Editar</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ route('admin.home.cadastro.areas.update') }}" method="POST" id="{{ $area->id }}">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <input type="hidden" name="id" value="{{ $area->id }}">
+                                                        <input type="text" class="form-control" name="name" value="{{ $area->name }}">
+
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                    <button type="button" class="btn btn-primary" onclick="update({{ $area->id }});">Salvar</button>
+                                                </div>
+                                                    </form>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
                                 </th>
                                 <td></td>
-                                <td></td>
                                 <td>
-                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
-                                    </form>
+                                    <button href="#myModal{{ $area->id }}" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
                                 </td>
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.areas.excluir') }}" method="POST">
@@ -41,9 +73,7 @@
                                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                     </form>
                                 </td>
-                                <td>
-                                    
-                                </td>
+                                <td></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -53,6 +83,8 @@
             </div>
         </div>
     </div>
+
+
 </div>
 @endsection
 
