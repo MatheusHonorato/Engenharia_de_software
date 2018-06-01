@@ -23,8 +23,18 @@
                         <tbody>
                             @foreach ($cursos as $curso)
                             <tr>
-                                <th scope="row">{{ $curso->name }}</th>
+                                <td>{{ $curso->name }}</td>
+                                @foreach ($areas as $area)
+                                    @if($area->id == $curso->id_area)
+                                        <td scope="row">{{ $area->name }}</td>
+                                    @endif
+                                @endforeach
 
+                                @foreach ($tipos as $tipo)
+                                    @if($tipo->id == $curso->id_tipo)
+                                        <td scope="row">{{ $tipo->name }}</td>
+                                    @endif
+                                @endforeach
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.cursos.edit') }}" method="POST">
                                         <input type="hidden" name="id" value="{{ $curso->id }}">

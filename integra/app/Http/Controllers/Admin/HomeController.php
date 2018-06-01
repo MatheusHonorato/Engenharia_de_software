@@ -57,17 +57,20 @@ class HomeController extends Controller
         $user = Admin::find($id); 
         $name = substr($user->name, 0, 5); 
 
-        $areas = Area::orderBy('created_at', 'desc')->paginate(5);
+        $areas = Area::paginate(5);
         return view('admin.cadastro.areas.index', compact('areas','name'));
     }
 
     public function areasExcluir(Request $request)
     {
         $id = $request->id;
-        $area = Area::find($id);    
-        $area->delete();
-
-        return redirect()->route('admin.home.cadastro.areas.index');
+        $cursos = Curso::where('id_area',$request->id)->count();
+        if($cursos == 0) {
+            $area = Area::find($id);    
+            $area->delete();
+            return redirect()->route('admin.home.cadastro.areas.index');
+        } 
+        return redirect()->route('admin.home.cadastro.areas.index')->with('error', 'Esta área não pode ser excluida pois possui cursos associados');
     }
 
      public function areasCreate()
@@ -304,8 +307,10 @@ class HomeController extends Controller
         $user = Admin::find($id); 
         $name = substr($user->name, 0, 5); 
 
-        $cursos = Curso::orderBy('created_at', 'desc')->paginate(5);
-        return view('admin.cadastro.cursos.index', compact('cursos','name'));
+        $cursos = Curso::paginate(5);
+        $areas = Area::all();
+        $tipos = Tipo::all();
+        return view('admin.cadastro.cursos.index', compact('cursos','name','areas','tipos'));
     }
 
     public function cursosCreate()
@@ -330,6 +335,15 @@ class HomeController extends Controller
         $curso->id_area = $request->area;
         $curso->id_tipo = $request->tipo;
         $curso->save();
+
+        return redirect()->route('admin.home.cadastro.cursos.index');
+    }
+
+    public function cursosExcluir(Request $request)
+    {
+        $id = $request->id;
+        $curso = Curso::find($id);    
+        $curso->delete();
 
         return redirect()->route('admin.home.cadastro.cursos.index');
     }
