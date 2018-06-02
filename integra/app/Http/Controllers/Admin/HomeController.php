@@ -73,34 +73,30 @@ class HomeController extends Controller
         return redirect()->route('admin.home.cadastro.areas.index')->with('error', 'Esta área não pode ser excluida pois possui cursos associados');
     }
 
-     public function areasCreate()
-    {   
-        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
-
-        $id = $var['id'];
-
-        $user = Admin::find($id); 
-        $name = substr($user->name, 0, 5); 
-       
-        return view('admin.cadastro.areas.new',compact('name'));
-    }
-
     public function areasStore(Request $request)
     {
+        $this->validate($request, array(
+            'name'         => 'required|max:30'
+        ));
+
         $area = new Area;
         $area->name = $request->name;
         $area->save();
 
-        return redirect()->route('admin.home.cadastro.areas.index');
+        return redirect()->route('admin.home.cadastro.areas.index')->with('error', 'Por favor insira um nome');
     }
 
     public function areasUpdate(Request $request)
     {
+        $this->validate($request, array(
+            'name'         => 'required|max:30'
+        ));
+        
         $area = Area::find($request->id);
         $area->name = $request->name;
         $area->save();
 
-        return redirect()->route('admin.home.cadastro.areas.index');
+        return redirect()->route('admin.home.cadastro.areas.index')->with('error', 'Por favor insira um nome');
     }
     //
 
