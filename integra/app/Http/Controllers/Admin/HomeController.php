@@ -323,6 +323,17 @@ class HomeController extends Controller
         return redirect()->route('admin.home.cadastro.cursos.index');
     }
 
+    public function cursosUpdate(Request $request)
+    {
+        $curso = Curso::find($request->id);
+        $curso->name = $request->name;
+        $curso->id_area = $request->area;
+        $curso->id_tipo = $request->tipo;
+        $curso->save();
+
+        return redirect()->route('admin.home.cadastro.cursos.index');
+    }
+
     public function cursosExcluir(Request $request)
     {
         $id = $request->id;
