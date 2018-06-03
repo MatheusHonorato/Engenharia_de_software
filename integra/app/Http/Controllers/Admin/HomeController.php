@@ -265,7 +265,7 @@ class HomeController extends Controller
     public function categoriasStore(Request $request)
     {
         $tipo = new Tipo;
-        $tipo->name = $request->categoria;
+        $tipo->name = $request->name;
         $tipo->save();
 
         return redirect()->route('admin.home.cadastro.categorias.index');
