@@ -250,18 +250,6 @@ class HomeController extends Controller
         return view('admin.cadastro.categorias.index', compact('name','tipos'));
     }
 
-    public function categoriasCreate()
-    {
-        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
-
-        $id = $var['id'];
-
-        $user = Admin::find($id); 
-        $name = substr($user->name, 0, 5); 
-
-        return view('admin.cadastro.categorias.new', compact('name'));
-    }
-
     public function categoriasStore(Request $request)
     {
         $tipo = new Tipo;
