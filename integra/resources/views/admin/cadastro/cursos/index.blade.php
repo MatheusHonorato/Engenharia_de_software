@@ -23,17 +23,62 @@
                             @foreach ($cursos as $curso)
                             <tr>
                                 <td>{{ $curso->name }}</td>
-                                <td>
-                                    <form action="{{ route('admin.home.cadastro.cursos.edit') }}" method="POST">
-                                        <input type="hidden" name="id" value="{{ $curso->id }}">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-                                    </form>
-                                </td>
+                                <th>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="myModal{{ $curso->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                                    <h4 class="modal-title">Editar</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ route('admin.home.cadastro.cursos.update') }}" method="POST" id="{{ $curso->id }}">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <input type="hidden" name="id" value="{{ $curso->id }}">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="name" value="{{ $curso->name }}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <select name="area" class="form-control">
+                                                            @foreach($areas as $area)
+                                                                @if($area->id == $curso->id_area)
+                                                                    <option value="{{ $area->id }}" selected>{{ $area->name }}</option>
+                                                                @endif
+                                                                @if($area->id != $curso->id_area)
+                                                                    <option value="{{ $area->id }}">{{ $area->name }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <select name="tipo" class="form-control">
+                                                            @foreach($tipos as $tipo)
+                                                                @if($tipo->id == $curso->id_tipo)
+                                                                    <option value="{{ $tipo->id }}" selected>{{ $tipo->name }}</option>
+                                                                @endif
+                                                                @if($tipo->id != $curso->id_tipo)
+                                                                    <option value="{{ $tipo->id }}">{{ $tipo->name }}</option>
+                                                                @endif
+                                                            @endforeach
+                                                            </select>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                    <button type="button" class="btn btn-primary" onclick="update({{ $curso->id }});">Salvar</button>
+                                                </div>
+                                                    </form>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+                                    <button href="#myModal{{ $curso->id }}" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
+                                </th>
+
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.cursos.excluir') }}" method="POST">
-                                        <input type="hidden" name="id" value="{{ $curso->id }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id" value="{{ $curso->id }}">
                                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                     </form>
                                 </td>
