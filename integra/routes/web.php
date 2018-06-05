@@ -74,8 +74,6 @@ Route::group(['middleware' => 'admin_auth'], function(){
 
 	Route::post('admin/home/habilidades/excluir', 'Admin\HomeController@habilidadesExcluir')->name('admin.home.cadastro.habilidades.excluir');
 
-	Route::get('admin/home/habilidades/criar', 'Admin\HomeController@habilidadesCreate')->name('admin.home.cadastro.habilidades.criar');
-
 	Route::post('admin/home/habilidades/criar', 'Admin\HomeController@habilidadesStore')->name('admin.home.cadastro.habilidades.store');
 
 	Route::post('admin/home/habilidades/update', 'Admin\HomeController@habilidadesUpdate')->name('admin.home.cadastro.habilidades.update');

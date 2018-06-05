@@ -126,18 +126,6 @@ class HomeController extends Controller
         return redirect()->route('admin.home.cadastro.habilidades.index');
     }
 
-     public function habilidadesCreate()
-    {
-        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
-
-        $id = $var['id'];
-
-        $user = Admin::find($id); 
-        $name = substr($user->name, 0, 5); 
-       
-        return view('admin.cadastro.habilidades.new', compact('name'));
-    }
-
     public function habilidadesStore(Request $request)
     {
         $habilidade = new Habilidade;

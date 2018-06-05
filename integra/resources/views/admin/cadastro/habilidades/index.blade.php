@@ -13,8 +13,6 @@
                             <button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></span>Novo</button></a>
                             <tr>
                               <th>Nome</th>
-                              <th></th>
-                              <th></th>
                               <th>Editar</th>
                               <th>Remover</th>
                             </tr>
@@ -22,27 +20,39 @@
                         <tbody>
                             @foreach ($habilidades as $habilidade)
                             <tr>
-                                <th scope="row">
-                                    <form action="{{ route('admin.home.cadastro.habilidades.update') }}" method="POST">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="hidden" name="id" value="{{ $habilidade->id }}">
-                                        {{ $habilidade->name }}
+                                <td>{{ $habilidade->name }}</td>
+                                <th>
+                                <!-- Modal -->
+                                    <div class="modal fade" id="myModal{{ $habilidade->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                                    <h4 class="modal-title">Editar</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ route('admin.home.cadastro.habilidades.update') }}" method="POST" id="{{ $habilidade->id }}">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <input type="hidden" name="id" value="{{ $habilidade->id }}">
+                                                        <input type="text" class="form-control" name="name" value="{{ $habilidade->name }}">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                                                    <button type="button" class="btn btn-primary" onclick="update({{ $habilidade->id }});">Salvar</button>
+                                                </div>
+                                                    </form>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+                                    <button href="#myModal{{ $habilidade->id }}" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></button>
                                 </th>
-                                <td></td>
-                                <td></td>
-                                <td>    
-                                        <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span></button>
-                                    </form>
-                                </td>
+                                    
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.habilidades.excluir') }}" method="POST">
-                                        <input type="hidden" name="id" value="{{ $habilidade->id }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id" value="{{ $habilidade->id }}">
                                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                     </form>
-                                </td>
-                                <td>
-                                    
                                 </td>
                             </tr>
                             @endforeach
