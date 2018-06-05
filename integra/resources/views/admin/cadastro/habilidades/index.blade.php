@@ -8,25 +8,25 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Habilidades</div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
+                            <button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></span>Novo</button></a>
                             <tr>
                               <th>Nome</th>
                               <th></th>
                               <th></th>
                               <th>Editar</th>
                               <th>Remover</th>
-                              <th><a href="{{ route('admin.home.cadastro.habilidades.criar') }}"><button type="submit" class="btn btn-success pull-right"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></a></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($habilidades as $habilidade)
                             <tr>
                                 <th scope="row">
-                                     <form action="{{ route('admin.home.cadastro.habilidades.update') }}" method="POST">
+                                    <form action="{{ route('admin.home.cadastro.habilidades.update') }}" method="POST">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="hidden" name="id" value="{{ $habilidade->id }}">
-                                        <input type="text" class="form-control" name="name" value="{{ $habilidade->name }}">
+                                        {{ $habilidade->name }}
                                 </th>
                                 <td></td>
                                 <td></td>
@@ -54,6 +54,37 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModalsave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                    <h4 class="modal-title">Novo</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('admin.home.cadastro.habilidades.store') }}" method="POST" id="save">
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">                            
+                        <input  class="form-control" name="name" type="text" required="required">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
+                    <button type="button" class="btn btn-primary" onclick="update('save');">Salvar</button>
+                </div>
+                    </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+</div>
 @endsection
+
+<script type="text/javascript">
+    function update($id)
+
+    {
+
+        document.getElementById($id).submit();
+
+    }
+</script>
 
 @extends('admin.layouts.partials.footer')

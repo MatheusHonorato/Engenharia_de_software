@@ -10,7 +10,7 @@
                 <div class="panel-heading">Áreas
                 </div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                             <button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button>
                             <tr>

@@ -10,10 +10,9 @@
                 <div class="panel-body">
                     <table class="table table-hover">
                         <thead>
+                            <a href="{{ route('admin.home.cadastro.categorias.index') }}" class="pull-right"><button type="submit" class="btn btn-primary ">Categorias</button></a>
                                 
-                                    <a href="{{ route('admin.home.cadastro.categorias.index') }}" class="pull-right"><button type="submit" class="btn btn-primary ">Categorias</button></a>
-                                
-                                    <button href="#myModalsave" style="margin-right: 15px; !important" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button>
+                            <button href="#myModalsave" style="margin-right: 15px; !important" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button>
                             <tr>
                               <th>Nome</th>
                               <th>Editar</th>

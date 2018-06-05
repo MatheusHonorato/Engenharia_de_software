@@ -141,7 +141,7 @@ class HomeController extends Controller
     public function habilidadesStore(Request $request)
     {
         $habilidade = new Habilidade;
-        $habilidade->name = $request->habilidade;
+        $habilidade->name = $request->name;
         $habilidade->save();
 
         return redirect()->route('admin.home.cadastro.habilidades.index');
@@ -270,12 +270,15 @@ class HomeController extends Controller
     }
 
     public function categoriasExcluir(Request $request)
-    {
-        $id = $request->id;
-        $tipo = Tipo::find($id);    
-        $tipo->delete();
+    {   
+        $cursos = Curso::where('id_tipo',$request->id)->count();
+        if($cursos == 0) {
+            $tipo = Tipo::find($request->id);    
+            $tipo->delete();
+            return redirect()->route('admin.home.cadastro.categorias.index')->with('success', 'Área removida com sucesso!');
+        } 
 
-        return redirect()->route('admin.home.cadastro.categorias.index');
+        return redirect()->route('admin.home.cadastro.categorias.index')->with('error', 'Esta categoria não pode ser excluida pois possui cursos associados');
     }
 
     //
