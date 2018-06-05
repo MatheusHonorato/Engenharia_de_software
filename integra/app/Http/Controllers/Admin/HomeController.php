@@ -68,22 +68,23 @@ class HomeController extends Controller
         if($cursos == 0) {
             $area = Area::find($id);    
             $area->delete();
-            return redirect()->route('admin.home.cadastro.areas.index');
+            return redirect()->route('admin.home.cadastro.areas.index')->with('success', 'Área removida com sucesso!');
         } 
         return redirect()->route('admin.home.cadastro.areas.index')->with('error', 'Esta área não pode ser excluida pois possui cursos associados');
     }
 
+
     public function areasStore(Request $request)
     {
-        $this->validate($request, array(
-            'name'         => 'required|max:30'
-        ));
+        $request->validate([
+            'name' => 'required',
+        ]);
 
         $area = new Area;
         $area->name = $request->name;
         $area->save();
 
-        return redirect()->route('admin.home.cadastro.areas.index')->with('error', 'Por favor insira um nome');
+        return redirect()->route('admin.home.cadastro.areas.index')->with('success', 'Área cadastrada com sucesso!');
     }
 
     public function areasUpdate(Request $request)
@@ -96,7 +97,7 @@ class HomeController extends Controller
         $area->name = $request->name;
         $area->save();
 
-        return redirect()->route('admin.home.cadastro.areas.index')->with('error', 'Por favor insira um nome');
+        return redirect()->route('admin.home.cadastro.areas.index')->with('success', 'Área atualizada com sucesso!');
     }
     //
 

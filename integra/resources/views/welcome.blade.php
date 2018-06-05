@@ -1,54 +1,6 @@
 @extends('layouts.partials-geral.head')
 @extends('layouts.partials-geral.header')
-<style type="text/css">
-    #banner{
-        background-image: url('img/banner.jpg');
-        color: white;
-        height: 20em;
-        padding-left: 6em;
-        padding-top: 0em;
-    }
-    #btn-banner{
-        background-color: white;
-    }
 
-    .thumbnail{
-        height: 10em;
-        border: 0px !important;
-    }
-
-    body{
-        padding-top: 5em !important;
-    }
-
-    @media (min-width: 1000px){
-        #form-banner{
-            background-color: rgba(255,255,255,.5);
-            height: 20em;
-        }
-    }
-
-    #mensagem-banner{
-        padding-top: 2.5em;
-    }
-      @media (max-width: 750px) 
-    {
-      #banner 
-       {
-         padding-top: 3.5em;
-         padding-left: 0em;
-
-       }
-
-       #form-banner{
-            background-color: rgba(255,255,255,.5);
-            height: 0em;
-        }
-       
-    }
-           
-
-</style>
 
 @if(session()->has('message'))
     <div class="alert alert-danger" style="margin-top: 1.8%; margin-bottom: 0%;">
@@ -56,17 +8,13 @@
     </div>
 @endif
 
-<div class="jumbotron" id="banner">
-    
-    <div class="container col-md-8" id="mensagem-banner">
+<div class="jumbotron">
+    <div class="col-md-offset-2 col-sm-offset-1">
         <h1>Conecte-se</h1>
         <p>Oportunidades para empresas, alunos e instituições de ensino</p>
         <p><a class="btn btn-default btn-lg" id="btn-banner" href="#" role="button">Mais</a></p>
     </div>
-    <div class="container col-md-4" id="form-banner">
-        
-    </div>
-</div> 
+</div>
 
 <div class="container">
       <!-- Example row of columns -->

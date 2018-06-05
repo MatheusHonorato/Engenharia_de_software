@@ -79,7 +79,21 @@ $(document).ready(function(){
 
 <body>
 
+    @if(session()->has('error'))
+      <div class="alert alert-danger" style="margin-top: -4%; margin-bottom: 4%;">
+          {{ session()->get('error') }}
+      </div>
+    @endif
+
+    @if(session()->has('success'))
+      <div class="alert alert-success" style="margin-top: -4%; margin-bottom: 4%;">
+          {{ session()->get('success') }}
+      </div>
+    @endif
+
     @yield('content')
+
+   
 
     <nav class="navbar navbar navbar-fixed-top" id="top-header">
       <div class="container-fluid">

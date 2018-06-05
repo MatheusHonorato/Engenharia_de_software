@@ -4,37 +4,26 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8  col-md-offset-2 col-xs-12">
             <div class="panel panel-default">
                 <div class="panel-heading">Cursos</div>
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
+                                
+                                    <a href="{{ route('admin.home.cadastro.categorias.index') }}" class="pull-right"><button type="submit" class="btn btn-primary ">Categorias</button></a>
+                                
+                                    <button href="#myModalsave" style="margin-right: 15px; !important" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button>
                             <tr>
                               <th>Nome</th>
-                              <th>Área</th>
-                              <th>Categoria</th>
                               <th>Editar</th>
                               <th>Remover</th>
-                              <th><a href="{{ route('admin.home.cadastro.categorias.index') }}"><button type="submit" class="btn btn-primary pull-right">Categorias</button></a></th>
-                              <th><button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($cursos as $curso)
                             <tr>
                                 <td>{{ $curso->name }}</td>
-                                @foreach ($areas as $area)
-                                    @if($area->id == $curso->id_area)
-                                        <td scope="row">{{ $area->name }}</td>
-                                    @endif
-                                @endforeach
-
-                                @foreach ($tipos as $tipo)
-                                    @if($tipo->id == $curso->id_tipo)
-                                        <td scope="row">{{ $tipo->name }}</td>
-                                    @endif
-                                @endforeach
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.cursos.edit') }}" method="POST">
                                         <input type="hidden" name="id" value="{{ $curso->id }}">

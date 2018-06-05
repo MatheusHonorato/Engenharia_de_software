@@ -4,20 +4,22 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+            <div class="row">
+                <div class="panel panel-default">
                 <div class="panel-heading">Áreas
                 </div>
                 <div class="panel-body">
                     <table class="table">
                         <thead>
+                            <button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button>
                             <tr>
                                 <th>Nome</th>
                                 <th></th>
                                 <th></th>
                                 <th>Editar</th>
                                 <th>Remover</th>
-                                <th><button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -54,8 +56,8 @@
                                 </td>
                                 <td>
                                     <form action="{{ route('admin.home.cadastro.areas.excluir') }}" method="POST">
-                                        <input type="hidden" name="id" value="{{ $area->id }}">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="hidden" name="id" value="{{ $area->id }}">
                                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                         </form>
                                 </td>
@@ -66,6 +68,7 @@
                     </table>
                     {{ $areas->links() }}
                 </div>
+            </div>
             </div>
         </div>
     </div>

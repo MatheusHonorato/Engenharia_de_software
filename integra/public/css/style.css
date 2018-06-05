@@ -1,0 +1,33 @@
+.jumbotron {
+	background-image: url('../img/banner.jpg');
+	color: white;
+}
+
+.jumbotron h1{
+	color: white;
+}
+
+@media (min-width: 768px){
+	body {
+    	padding-top: 6em;
+	}
+}
+
+@media (max-width: 768px){
+	.panel {
+    	margin-top: 30%;
+	}
+}
+
+@media (min-width: 800px){
+	.panel {
+    	margin-top: 13%;
+	}
+}
+
+
+
+
+
+
+
