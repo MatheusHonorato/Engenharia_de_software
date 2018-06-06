@@ -91,8 +91,6 @@ $(document).ready(function(){
       </div>
     @endif
 
-    @yield('content')
-
    
 
     <nav class="navbar navbar navbar-fixed-top" id="top-header">

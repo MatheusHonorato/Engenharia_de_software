@@ -1,8 +1,5 @@
-@extends('admin.layouts.partials.head')
-@extends('admin.layouts.partials.header')
-
+@extends('admin.layouts.partials.app')
 @section('content')
-<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2 col-xs-12">
             <div class="row">
@@ -91,17 +88,7 @@
                     </form>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
-    </div>
 @endsection
 
-<script type="text/javascript">
-    function update($id)
 
-    {
 
-        document.getElementById($id).submit();
-
-    }
-</script>
-
-@extends('admin.layouts.partials.footer')
