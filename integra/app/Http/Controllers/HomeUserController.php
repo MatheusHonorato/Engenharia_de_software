@@ -21,7 +21,7 @@ class HomeUserController extends Controller
         $user = User::find($id);
         if($user->status == '0'){
             Auth::logout();
-            return Redirect::route('welcome')->with('message', 'Aguaarde aprovação');
+            return Redirect::route('welcome')->with('message', 'Aguarde aprovação');
         }
         return view('home', compact('user'));
     }

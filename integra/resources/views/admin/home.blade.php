@@ -1,6 +1,4 @@
-@extends('admin.layouts.partials.head')
-@extends('admin.layouts.partials.header')
-
+@extends('admin.layouts.partials.app')
 @section('content')
 <div class="container">
     <div class="row">
@@ -16,5 +14,3 @@
     </div>
 </div>
 @endsection
-
-@extends('admin.layouts.partials.footer')
