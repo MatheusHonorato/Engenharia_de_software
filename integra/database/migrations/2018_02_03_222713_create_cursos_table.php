@@ -15,12 +15,10 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->increments('id');
-            
             $table->integer('id_tipo');
-            
             $table->integer('id_area');
-            
             $table->string('name');
+            $table->integer('amount');
             $table->timestamps();
         });
     }

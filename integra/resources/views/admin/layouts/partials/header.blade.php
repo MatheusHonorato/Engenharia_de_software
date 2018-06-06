@@ -157,7 +157,7 @@ $(document).ready(function(){
                   <li><a href="{{ route('admin.home.notificacoes.emp') }}">Empresa</a></li>
                 </ul>
             </li>
-            <li><a href="#about">Estatísticas</a></li>
+            <li><a href="{{ route('admin.home.esatisticas') }}">Estatísticas</a></li>
             <li><a href="#about">Matchs</a></li>
           </ul>
             <ul class="nav navbar-nav navbar-right">

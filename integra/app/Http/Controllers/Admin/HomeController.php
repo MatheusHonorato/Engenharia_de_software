@@ -350,4 +350,15 @@ class HomeController extends Controller
         return view('admin.notificacoes-emp', compact('emps','name'));
     }
 
+    //estatísticas
+
+    public function estatisticasIndex()
+    {
+        $var = Auth::guard('web_admin')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $user = Admin::find($id); 
+        $name = substr($user->name, 0, 5); 
+        return view('admin.estatisticas.index', compact('name'));
+    }
+
 }

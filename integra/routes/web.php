@@ -106,6 +106,10 @@ Route::group(['middleware' => 'admin_auth'], function(){
 
 	Route::post('admin/home/cursos/editar', 'Admin\HomeController@cursosUpdate')->name('admin.home.cadastro.cursos.update');
 	//
+
+	//Estatísticas
+	Route::get('admin/home/estatisticas', 'Admin\HomeController@estatisticasIndex')->name('admin.home.esatisticas');
+
 });
 //
 
