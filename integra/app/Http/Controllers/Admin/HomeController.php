@@ -13,6 +13,7 @@ use App\Tipo;
 use App\Admin;
 use App\Habilidade;
 use App\Curso;
+use App\Match;
 
 class HomeController extends Controller
 {
@@ -358,7 +359,11 @@ class HomeController extends Controller
         $id = $var['id'];
         $user = Admin::find($id); 
         $name = substr($user->name, 0, 5); 
-        return view('admin.estatisticas.index', compact('name'));
+        $userAmount = User::count();
+        $empAmount = Emp::count();
+        $matchAmount = Match::count();
+
+        return view('admin.estatisticas.index', compact('name','userAmount','empAmount','matchAmount'));
     }
 
 }

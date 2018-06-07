@@ -3,22 +3,49 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Inicio - Estatísticas</div>
 
+            <div class="panel panel-default col-md-2">
+              <div class="panel-body">
+                {{ $userAmount }}<br>
+                alunos
+                icone
+              </div>
+            </div>
+
+            <div class="panel panel-default col-md-2 col-md-offset-1">
+              <div class="panel-body">
+                {{ $empAmount }}<br>
+                empresas
+                icone
+              </div>
+            </div>
+
+            <div class="panel panel-default col-md-2 col-md-offset-1">
+              <div class="panel-body">
+                {{ $matchAmount }}<br>
+                matchs
+                icone
+              </div>
+            </div>
+
+            <div class="panel panel-default col-md-3 col-md-offset-1">
+              <div class="panel-body">
+                Rankings
+                <br>
+                icone
+              </div>
+            </div>
+
+            <!--panel-->
+            <div class="panel panel-default col-md-5">
+                <div class="panel-heading">Habilidades alunos universidade</div>
                 <div class="panel-body">
-                    <h4>Ranking Alunos Habilidades, Ranking avaliação empresas, Estatísticas Matchs(quantidade de matchs por mes)</h4>
-                    <div style="max-width: 500px;" class="col-md-5 left">
+                    <!--<h4>Ranking Alunos Habilidades, Ranking avaliação empresas, Estatísticas Matchs(quantidade de matchs por mes)</h4>-->
+                    card atd alunos, empresas matchs
+                    <div>
                         <canvas id="skills"></canvas>
                     </div>
-
-                    <div style="max-width: 500px;" class="col-md-5 col-md-offset-2 right">
-                        <canvas id="areas"></canvas>
-                    </div>
                 </div>
-        
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-
                 <script type="text/javascript">
                     new Chart(document.getElementById("skills"), {
                         type: 'pie',
@@ -38,7 +65,18 @@
                         }
                     });
                 </script>
+                </div>
+            <!-- panel -->
 
+            <!-- panel -->
+            <div class="panel panel-default col-md-5 col-md-offset-2">
+                <div class="panel-heading">Áreas alunos universidade</div>
+                <div class="panel-body">
+                    <!--<h4>Ranking Alunos Habilidades, Ranking avaliação empresas, Estatísticas Matchs(quantidade de matchs por mes)</h4>-->
+                    <div>
+                        <canvas id="areas"></canvas>
+                    </div>
+                </div>
                 <script type="text/javascript">
                     new Chart(document.getElementById("areas"), {
                         type: 'pie',
@@ -58,10 +96,12 @@
                         }
                     });
                 </script>
-
                 </div>
             </div>
+            <!--panel-->
         </div>
     </div>
 </div>
 @endsection
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
