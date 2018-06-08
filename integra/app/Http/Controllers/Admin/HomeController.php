@@ -131,6 +131,7 @@ class HomeController extends Controller
     {
         $habilidade = new Habilidade;
         $habilidade->name = $request->name;
+        $habilidade->amount = 0;
         $habilidade->save();
 
         return redirect()->route('admin.home.cadastro.habilidades.index');
@@ -363,7 +364,10 @@ class HomeController extends Controller
         $empAmount = Emp::count();
         $matchAmount = Match::count();
 
-        return view('admin.estatisticas.index', compact('name','userAmount','empAmount','matchAmount'));
+        $habilidades = Habilidade::all();
+        $countHabilidades = count($habilidades);
+
+        return view('admin.estatisticas.index', compact('name','userAmount','empAmount','matchAmount','habilidades','countHabilidades'));
     }
 
 }

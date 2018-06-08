@@ -1,3 +1,9 @@
+a {
+	text-decoration: none;
+	color: #636b6f;
+}
+
+
 .jumbotron {
 	background-image: url('../img/banner.jpg');
 	color: white;

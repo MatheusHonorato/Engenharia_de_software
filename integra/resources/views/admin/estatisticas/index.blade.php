@@ -28,13 +28,15 @@
               </div>
             </div>
 
-            <div class="panel panel-default col-md-3 col-md-offset-1">
-              <div class="panel-body">
-                Rankings
-                <br>
-                icone
-              </div>
-            </div>
+            <a href="#">
+                <div class="panel panel-default col-md-3 col-md-offset-1">
+                  <div class="panel-body">
+                    Rankings
+                    <br>
+                    icone
+                  </div>
+                </div>
+            </a>
 
             <!--panel-->
             <div class="panel panel-default col-md-5">
@@ -50,10 +52,35 @@
                     new Chart(document.getElementById("skills"), {
                         type: 'pie',
                         data: {
-                          labels: ["mysql", "java", "jquery", "html", "comunicação"],
+                          labels: [
+
+                          @foreach($habilidades as $habilidade)
+
+                            "{{ $habilidade->name }}" 
+                            @if($countHabilidades != 0)
+                                ,
+                            @endif
+
+                          @endforeach
+
+                          ],
+
                           datasets: [{
                             label: "Skills",
-                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+
+                            backgroundColor: [
+
+                              @foreach($habilidades as $habilidade)
+
+                                "{{ $habilidade->amount.$habilidade->id }}" 
+                                @if($countHabilidades != 0)
+                                    ,
+                                @endif
+
+                              @endforeach
+
+                                ],
+
                             data: [2478,5267,734,784,433]
                           }]
                         },
