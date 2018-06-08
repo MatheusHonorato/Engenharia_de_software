@@ -83,6 +83,7 @@ class HomeController extends Controller
 
         $area = new Area;
         $area->name = $request->name;
+        $area->amount = 0;
         $area->save();
 
         return redirect()->route('admin.home.cadastro.areas.index')->with('success', 'Área cadastrada com sucesso!');
@@ -367,7 +368,10 @@ class HomeController extends Controller
         $habilidades = Habilidade::all();
         $countHabilidades = count($habilidades);
 
-        return view('admin.estatisticas.index', compact('name','userAmount','empAmount','matchAmount','habilidades','countHabilidades'));
+        $areas = Area::all();
+        $countAreas = count($areas);
+
+        return view('admin.estatisticas.index', compact('name','userAmount','empAmount','matchAmount','habilidades','countHabilidades','areas','countAreas'));
     }
 
 }

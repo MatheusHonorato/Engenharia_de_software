@@ -43,55 +43,67 @@
                 <div class="panel-heading">Habilidades alunos universidade</div>
                 <div class="panel-body">
                     <!--<h4>Ranking Alunos Habilidades, Ranking avaliação empresas, Estatísticas Matchs(quantidade de matchs por mes)</h4>-->
-                    card atd alunos, empresas matchs
+                    <!--card atd alunos, empresas matchs-->
                     <div>
                         <canvas id="skills"></canvas>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    new Chart(document.getElementById("skills"), {
-                        type: 'pie',
-                        data: {
-                          labels: [
+                   <script>
+                var ctx = document.getElementById("skills").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
 
-                          @foreach($habilidades as $habilidade)
+                        labels: [
 
-                            "{{ $habilidade->name }}" 
-                            @if($countHabilidades != 0)
-                                ,
-                            @endif
+                        @foreach($habilidades as $habilidade)
 
-                          @endforeach
+                        "{{ $habilidade->name }}",
 
-                          ],
+                        @endforeach
 
-                          datasets: [{
-                            label: "Skills",
+                        ],
+                        datasets: [{
+                            label: '',
+                            data: [
 
+                            @foreach($habilidades as $habilidade)
+
+                            "{{ $habilidade->amount }}",
+
+                            @endforeach
+
+                            ],
                             backgroundColor: [
 
-                              @foreach($habilidades as $habilidade)
+                            @for($i = 0; $i < $countHabilidades; $i++)
+                                'rgba(54, 162, 235, 0.2)',
+                            @endfor
+                            ],
+                            borderColor: [
 
-                                "{{ $habilidade->amount.$habilidade->id }}" 
-                                @if($countHabilidades != 0)
-                                    ,
-                                @endif
+                            @for($i = 0; $i < $countHabilidades; $i++)
+                                'rgba(54, 162, 235, 1)',
+                            @endfor
 
-                              @endforeach
-
-                                ],
-
-                            data: [2478,5267,734,784,433]
-                          }]
-                        },
-                        options: {
-                          title: {
-                            display: true,
-                            text: 'Habilidades alunos universidade'
-                          }
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                      legend: {
+                          display: false
+                      },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
                         }
-                    });
-                </script>
+                    }
+                });
+              </script>
                 </div>
             <!-- panel -->
 
@@ -104,25 +116,62 @@
                         <canvas id="areas"></canvas>
                     </div>
                 </div>
-                <script type="text/javascript">
-                    new Chart(document.getElementById("areas"), {
-                        type: 'pie',
-                        data: {
-                          labels: ["Ciencia da computação", "Engenharia", "Letras", "Licenciatura", "Comunicação"],
-                          datasets: [{
-                            label: "Skills",
-                            backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
-                            data: [2478,5267,734,784,433]
-                          }]
-                        },
-                        options: {
-                          title: {
-                            display: true,
-                            text: 'Áreas alunos universidade'
-                          }
+               <script>
+                var ctx = document.getElementById("areas").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+
+                        labels: [
+
+                        @foreach($areas as $area)
+
+                        "{{ $area->name }}",
+
+                        @endforeach
+
+                        ],
+                        datasets: [{
+                            label: '',
+                            data: [
+
+                            @foreach($areas as $area)
+
+                            "{{ $area->amount }}",
+
+                            @endforeach
+
+                            ],
+                            backgroundColor: [
+
+                            @for($i = 0; $i < $countAreas; $i++)
+                                'rgba(54, 162, 235, 0.2)',
+                            @endfor
+                            ],
+                            borderColor: [
+
+                            @for($i = 0; $i < $countAreas; $i++)
+                                'rgba(54, 162, 235, 1)',
+                            @endfor
+
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                      legend: {
+                          display: false
+                      },
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero:true
+                                }
+                            }]
                         }
-                    });
-                </script>
+                    }
+                });
+              </script>
                 </div>
             </div>
             <!--panel-->
