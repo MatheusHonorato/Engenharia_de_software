@@ -30,13 +30,13 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                                    <h4 class="modal-title">Editar</h4>
+                                                    <h4 class="modal-title">Editar Área</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form action="{{ route('admin.home.cadastro.areas.update') }}" method="POST" id="{{ $area->id }}">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         <input type="hidden" name="id" value="{{ $area->id }}">
-                                                        <input type="text" class="form-control" name="name" value="{{ $area->name }}">
+                                                        <input type="text" class="form-control" name="name" value="{{ $area->name }}" placeholder="Nome Área">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
@@ -74,12 +74,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                    <h4 class="modal-title">Novo</h4>
+                    <h4 class="modal-title">Nova Área</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('admin.home.cadastro.areas.store') }}" method="POST" id="save">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">                            
-                        <input  class="form-control" name="name" type="text" required="required">
+                        <input  class="form-control" name="name" placeholder="Nome Área" type="text" required="required">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>

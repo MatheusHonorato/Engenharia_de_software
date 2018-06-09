@@ -93,15 +93,16 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                    <h4 class="modal-title">Novo</h4>
+                    <h4 class="modal-title">Novo Curso</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('admin.home.cadastro.cursos.store') }}" method="POST" id="save">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">                            
                         <div class="form-group">
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Nome" required="" autofocus="">
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Nome Curso" required="" autofocus="">
                         </div>
                         <div class="form-group">
+                            <label>Área</label>
                             <select name="area" class="form-control">
                             @foreach($areas as $area)
                                 <option value="{{ $area->id }}">{{ $area->name }}</option>
@@ -109,6 +110,7 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Categoria</label>
                             <select name="tipo" class="form-control">
                             @foreach($tipos as $tipo)
                                 <option value="{{ $tipo->id }}">{{ $tipo->name }}</option>

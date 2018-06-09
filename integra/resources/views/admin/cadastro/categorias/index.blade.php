@@ -25,13 +25,13 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                                    <h4 class="modal-title">Editar</h4>
+                                                    <h4 class="modal-title">Editar Categoria</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form action="{{ route('admin.home.cadastro.categorias.update') }}" method="POST" id="{{ $tipo->id }}">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         <input type="hidden" name="id" value="{{ $tipo->id }}">
-                                                        <input type="text" class="form-control" name="name" value="{{ $tipo->name }}">
+                                                        <input type="text" class="form-control" name="name" value="{{ $tipo->name }}" placeholder="Nome Categoria">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
@@ -68,12 +68,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                    <h4 class="modal-title">Novo</h4>
+                    <h4 class="modal-title">Nova Categoria</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('admin.home.cadastro.categorias.store') }}" method="POST" id="save">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">                            
-                        <input  class="form-control" name="name" type="text" required="required">
+                        <input  class="form-control" name="name" placeholder="Nome Categoria" type="text" required="required">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
