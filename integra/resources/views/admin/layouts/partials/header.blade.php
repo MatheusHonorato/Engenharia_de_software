@@ -136,9 +136,11 @@ $(document).ready(function(){
     </div><!-- /input-group -->
   </div>
 </li>
+      
+              <li><a href="#about">Início</a></li>
 
       <li class="dropdown">
-    
+        
         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro <span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a tabindex="-1" href="{{ route('admin.home.cadastro.areas.index') }}">Áreas</a></li>
@@ -147,9 +149,7 @@ $(document).ready(function(){
           </li>
         </ul>
       </li>
-
-
-            <li><a href="#about">Feed</a></li>
+  
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Notificações <span class="caret"></span></a>
                 <ul class="dropdown-menu">

@@ -66,7 +66,7 @@
     padding-left: 0em;
    }
    body{
-    padding-top: 10em;
+    padding-top: 15em;
     }
 }
 
@@ -101,7 +101,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav col-md-7">
-              <li><a href="{{ route('welcome') }}">Inicio</a></li>
+              <li><a href="{{ route('welcome') }}">Início</a></li>
               <li><a href="#about">Sobre</a></li>
               <li><a href="#about">Oportunidades</a></li>
             </ul>
