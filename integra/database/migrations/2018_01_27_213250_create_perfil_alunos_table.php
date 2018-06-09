@@ -26,6 +26,11 @@ class CreatePerfilAlunosTable extends Migration
             $table->string('cidade')->default('');
             $table->string('estado')->default('');
             $table->string('idiomas')->default('');
+            $table->string('lattes')->default('');
+            $table->string('facebook')->default('');
+            $table->string('linkedin')->default('');
+            $table->string('instagram')->default('');
+            $table->string('twitter')->default('');
             $table->timestamps();
         });
     }
