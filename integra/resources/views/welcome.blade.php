@@ -1,6 +1,5 @@
-@extends('layouts.partials-geral.head')
-@extends('layouts.partials-geral.header')
-
+@extends('layouts.app')
+@section('content')
 
 @if(session()->has('message'))
     <div class="alert alert-danger" style="margin-top: 1.8%; margin-bottom: 0%;">
@@ -111,4 +110,4 @@
             </div>
         </div>
 </div>
-@extends('layouts.partials-geral.footer')
+@endsection

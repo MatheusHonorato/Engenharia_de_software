@@ -63,8 +63,6 @@
 </style>
 <body>
 
-    @yield('content')
-
     <nav class="navbar navbar navbar-fixed-top" id="top-header">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -90,14 +88,14 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav col-md-7">
-            <li><a href="{{ route('welcome') }}">Inicio</a></li>
+            <li><a href="{{ route('welcome') }}">Início</a></li>
             <li><a href="#about">Sobre</a></li>
             <li><a href="#about">Oportunidades</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right col-md-2">
-                        <!-- Authentication Links -->
-              <li><a href="{{ route('geral.login') }}">Login</a></li>
-              <li><a href="{{ route('geral.register') }}">Cadastro</a></li>
+                        
+              <li><a href="{{ route('geral.login') }}">Entrar</a></li>
+              <li><a href="{{ route('geral.register') }}">Cadastrar</a></li>
             </ul>
         </div>
       </div>

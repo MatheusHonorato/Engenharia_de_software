@@ -1,12 +1,11 @@
-@extends('layouts.partials-geral.head')
-@extends('layouts.partials-geral.header')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">Aluno</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -53,7 +52,7 @@
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Login
+                                    Entrar
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -68,4 +67,3 @@
     </div>
 </div>
 @endsection
-@extends('layouts.partials-geral.footer')

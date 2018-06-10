@@ -11,7 +11,7 @@
 </style>
 <div class="container text-center">
     <h1 style="padding-top: 2em; padding-bottom: 2em;">Login</h1>
-    <div class="col-md-12">
+    <div class="col-md-12" style="padding-top: 2em;">
         <a href="{{ route('login') }}">
         <div class="col-md-2 col-md-offset-2 col-xs-8 col-xs-offset-2 bloco-user">
           <i class="far fa-user fa-5x"></i>

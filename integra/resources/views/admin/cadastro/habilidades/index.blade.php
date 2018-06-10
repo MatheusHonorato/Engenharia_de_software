@@ -7,7 +7,7 @@
                 <div class="panel-body">
                     <table class="table table-hover">
                         <thead>
-                            <button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></span>Novo</button></a>
+                            <button href="#myModalsave" class="btn btn-success pull-right" data-toggle="modal"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Novo</button></span></button></a>
                             <tr>
                               <th>Nome</th>
                               <th>Editar</th>
@@ -25,13 +25,13 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                                                    <h4 class="modal-title">Editar</h4>
+                                                    <h4 class="modal-title">Editar Habilidade</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     <form action="{{ route('admin.home.cadastro.habilidades.update') }}" method="POST" id="{{ $habilidade->id }}">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                                         <input type="hidden" name="id" value="{{ $habilidade->id }}">
-                                                        <input type="text" class="form-control" name="name" value="{{ $habilidade->name }}">
+                                                        <input type="text" placeholder="Nome Habilidade" class="form-control" name="name" value="{{ $habilidade->name }}">
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
@@ -67,12 +67,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                    <h4 class="modal-title">Novo</h4>
+                    <h4 class="modal-title">Nova Habilidade</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('admin.home.cadastro.habilidades.store') }}" method="POST" id="save">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">                            
-                        <input  class="form-control" name="name" type="text" required="required">
+                        <input  class="form-control" placeholder="Nome Habilidade" name="name" type="text" required="required">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>

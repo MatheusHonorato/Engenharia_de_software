@@ -1,9 +1,5 @@
-@extends('layouts.partials-geral.head')
-@extends('layouts.partials-geral.header')
-
+@extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Cadastro</div>
@@ -13,7 +9,7 @@
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('matricula') ? ' has-error' : '' }}">
-                            <label for="matricula" class="col-md-4 control-label">Matricula</label>
+                            <label for="matricula" class="col-md-4 control-label">Matrícula</label>
 
                             <div class="col-md-6">
                                 <input id="matricula" type="text" class="form-control" name="matricula" value="{{ old('matricula') }}" required autofocus>
@@ -86,8 +82,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
 @endsection
 
-@extends('layouts.partials-user.footer')

@@ -66,5 +66,3 @@
     </div>
 </div>
 @endsection
-
-@extends('admin.layouts.partials.footer')
