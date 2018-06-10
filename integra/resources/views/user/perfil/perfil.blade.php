@@ -9,20 +9,6 @@
                      <form class="form-horizontal" role="form" method="POST" action="{{ route('admin.home.perfil.index.update') }}">
                         {{ csrf_field() }}
 
-                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                            <label for="name" class="col-md-4 control-label">Nome</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" placeholder="Nome" value="{{ $user->name }}" required autofocus>
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Período</label>
 
@@ -67,6 +53,28 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="state" class="col-md-4 control-label">Estado</label>
+
+                            <div class="col-md-6">
+                              <select class="form-control" name="state">
+                                <option value="1">Minas Gerais</option>
+                                <option value="2">São Paulo</option>
+                                <option value="3">Rio de Janeiro</option>
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state" class="col-md-4 control-label">Cidade</label>
+
+                            <div class="col-md-6">
+                              <select class="form-control" name="state">
+                                <option value="1">Montes Claros</option>
+                              </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Idiomas</label>
 
                             <div class="col-md-6">
@@ -75,7 +83,47 @@
                                 <option value="2">Inglês</option>
                                 <option value="3">Espanhol</option>
                               </select>
-                          </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Lattes</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="lattes" placeholder="Lattes">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Facebook</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="facebook" placeholder="Facebook">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Linkedin</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="linkedin" placeholder="Linkedin">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Instagram</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="instagram" placeholder="Instagram">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Twitter</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="twitter" placeholder="Twitter">
+                            </div>
                         </div>
 
                         <div class="form-group">

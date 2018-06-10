@@ -37,6 +37,23 @@ class HomeUserController extends Controller
         return view('user.perfil.perfil', compact('user'));
     }
 
+
+    public function perfilIndexUpdate(Request $request)
+    {
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $perfilaluno = PerfilAluno::where('id_aluno',$id)->first();
+        $perfilaluno->periodo = $request->periodo;
+        $perfilaluno->idade = $request->idade;
+        $perfilaluno->telefone = $request->telefone;
+        $perfilaluno->estado = $estado->estado;
+        $perfilaluno->cidade = $estado->cidade;
+        $perfilaluno->bairro = $request->bairro;
+
+
+        return view('user.perfil.perfil', compact('user'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

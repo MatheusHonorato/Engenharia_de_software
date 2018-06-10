@@ -66,7 +66,7 @@ Route::group(['middleware' => 'admin_auth'], function(){
 
 	//perrfil
 	Route::get('admin/home/perfil', 'Admin\HomeController@perfilIndex')->name('admin.home.perfil.index');
-	Route::post('admin/home/perfil', 'Admin\HomeController@perfilIndex')->name('admin.home.perfil.index.update');
+	Route::post('admin/home/perfil', 'Admin\HomeController@perfilIndexUpdate')->name('admin.home.perfil.index.update');
 	//
 
 	//habilidades
