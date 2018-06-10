@@ -59,6 +59,26 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Nacionalidade</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="nacionalidade" placeholder="Nacionalidade">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Idiomas</label>
+
+                            <div class="col-md-6">
+                              <select class="form-control" name="idioma">
+                                <option value="1">Português</option>
+                                <option value="2">Inglês</option>
+                                <option value="3">Espanhol</option>
+                              </select>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-default">
                                     Atualizar
