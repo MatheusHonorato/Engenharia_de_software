@@ -63,8 +63,6 @@
 </style>
 <body>
 
-    @yield('content')
-
     <nav class="navbar navbar navbar-fixed-top" id="top-header">
       <div class="container-fluid">
         <div class="navbar-header">
