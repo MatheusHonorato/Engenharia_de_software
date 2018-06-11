@@ -16,9 +16,11 @@ class CreatePerfilAlunosTable extends Migration
         Schema::create('perfil_alunos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('id_aluno');
+            $table->date('nascimento')->default(date('d/m/y'));
+            $table->string('cpf')->default('');
+            $table->string('rg')->default('');
             $table->integer('periodo')->default('0');
             $table->string('telefone')->default('');
-            $table->integer('idade')->default('0');
             $table->string('bairro')->default('');
             $table->string('rua')->default('');
             $table->string('nacionalidade')->default('');
