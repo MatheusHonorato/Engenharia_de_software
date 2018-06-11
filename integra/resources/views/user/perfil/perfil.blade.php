@@ -21,7 +21,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Perfil</div>
                 <div class="panel-body">
-                     <form class="form-horizontal" role="form" method="POST" action="{{ route('user.home.perfil.submit') }}">
+                     <form class="form-horizontal" role="form" method="POST" action="{{ route('user.home.perfil.submit') }}" onsubmit="VerificaCPF();">
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -29,7 +29,7 @@
 
                             <div class="col-md-6">
                               <select class="form-control" name="periodo">
-                                @for($i=1; $i<=10 ;$i++)
+                                @for($i=1; $i<=12 ;$i++)
                                     @if($i==$perfilaluno->periodo)
                                         <option value="{{ $i }}" selected>{{ $i }}</option>
                                     @endif
@@ -45,7 +45,7 @@
                             <label for="name" class="col-md-4 control-label">Telefone</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="telefone" value="{{ $perfilaluno->telefone }}" placeholder="Telefone">
+                                <input class="form-control" type="text" name="telefone" value="{{ $perfilaluno->telefone }}" placeholder="Telefone" onkeypress="mascara(this, '## #####-####')" maxlength="13">
                             </div>
                         </div>
 
@@ -61,7 +61,7 @@
                             <label for="name" class="col-md-4 control-label">CPF</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="cpf" value="{{ $perfilaluno->cpf }}">
+                                <input class="form-control" type="text" name="cpf" value="{{ $perfilaluno->cpf }}" onkeypress="mascara(this, '###.###.###-##')" maxlength="14">
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@
                             <label for="name" class="col-md-4 control-label">RG</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="rg" value="{{ $perfilaluno->rg }}">
+                                <input class="form-control" type="text" name="rg" value="{{ $perfilaluno->rg }}" onkeypress="mascara(this, '##-##.###.###')" maxlength="13">
                             </div>
                         </div>
 
@@ -77,7 +77,17 @@
                             <label for="name" class="col-md-4 control-label">Sexo</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="sexo" value="{{ $perfilaluno->sexo }}">
+
+                                <select class="form-control" name="sexo">
+                                    @if($perfilaluno->sexo == 0)
+                                        <option value="0" selected>Masculino</option>
+                                        <option value="1">Feminino</option>
+                                    @endif
+                                    @if($perfilaluno->sexo == 1)
+                                        <option value="0">Masculino</option>
+                                        <option value="1" selected>Feminino</option>
+                                    @endif
+                                </select>
                             </div>
                         </div>
 
@@ -206,4 +216,15 @@
             </div>
         </div>
     </div>
+
+<script type="text/javascript">
+    function mascara(t, mask){
+        var i = t.value.length;
+        var saida = mask.substring(1,0);
+        var texto = mask.substring(i)
+        if (texto.substring(0,1) != saida){
+            t.value += texto.substring(0,1);
+        }
+    }
+</script>
 @endsection
