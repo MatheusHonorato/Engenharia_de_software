@@ -19,7 +19,7 @@ class CreatePerfilAlunosTable extends Migration
             $table->date('nascimento')->default(date('d/m/y'));
             $table->string('cpf')->default('');
             $table->string('rg')->default('');
-            $table->unsigned('sexo')->default('');
+            $table->unsignedBigInteger('sexo')->default('0');
             $table->integer('periodo')->default('0');
             $table->string('telefone')->default('');
             $table->string('bairro')->default('');

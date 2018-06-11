@@ -50,12 +50,37 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Idade</label>
+                            <label for="name" class="col-md-4 control-label">Data de Nascimento</label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="idade" value="{{ $perfilaluno->idade }}" placeholder="Idade">
+                                <input class="form-control" type="date" name="nascimento" value="{{ $perfilaluno->nascimento }}">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">CPF</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="cpf" value="{{ $perfilaluno->cpf }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">RG</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="rg" value="{{ $perfilaluno->rg }}">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name" class="col-md-4 control-label">Sexo</label>
+
+                            <div class="col-md-6">
+                                <input class="form-control" type="text" name="sexo" value="{{ $perfilaluno->sexo }}">
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Nacionalidade</label>

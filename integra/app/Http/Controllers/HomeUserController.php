@@ -46,9 +46,12 @@ class HomeUserController extends Controller
         $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
         $id = $var['id'];
         $perfilaluno = PerfilAluno::where('id_aluno',$id)->first();
+        $perfilaluno->nascimento = $request->nascimento;
+        $perfilaluno->cpf = $request->cpf;
+        $perfilaluno->rg = $request->rg;
+        $perfilaluno->sexo = $request->sexo;
         $perfilaluno->periodo = $request->periodo;
         $perfilaluno->telefone = $request->telefone;
-        $perfilaluno->idade = $request->idade;
         $perfilaluno->nacionalidade = $request->nacionalidade;
         $perfilaluno->estado = $request->estado;
         $perfilaluno->cidade = $request->cidade;
