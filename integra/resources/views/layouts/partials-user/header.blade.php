@@ -97,7 +97,15 @@
             
             <li><a href="{{ route('user.home.perfil.index') }}">Perfil</a></li>
             
-            <li class="nav-item"><a class="nav-link active" id="pills-notificacoes-tab" data-toggle="pill" href="#pills-notificacoes" role="tab" aria-controls="pills-notificacoes" aria-selected="true">Notificações</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cadastro <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a tabindex="-1" href="{{ route('admin.home.cadastro.cursos.index') }}">Cursos</a></li>
+                <li><a tabindex="-1" href="{{ route('admin.home.cadastro.habilidades.index') }}">Habilidades</a></li>
+                <li><a href="#">Atuação</a></li>
+                </li>
+              </ul>
+            </li>
             
             <li class="nav-item"><a class="nav-link active" id="pills-oportunidades-tab" data-toggle="pill" href="#pills-oportunidades" role="tab" aria-controls="pills-oportunidades" aria-selected="true">Oportunidades</a></li>
             <li class="nav-item"><a href="#about">Matchs</a></li>
