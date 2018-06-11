@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use Redirect;
+use App\PerfilAluno;
 
 class HomeUserController extends Controller
 {
@@ -33,8 +34,10 @@ class HomeUserController extends Controller
 
         $id = $var['id'];
 
-        $user = User::find($id);  
-        return view('user.perfil.perfil', compact('user'));
+        $user = User::find($id); 
+        $perfilaluno = PerfilAluno::where('id_aluno',$id)->first();
+
+        return view('user.perfil.perfil', compact('user','perfilaluno'));
     }
 
 
@@ -44,14 +47,37 @@ class HomeUserController extends Controller
         $id = $var['id'];
         $perfilaluno = PerfilAluno::where('id_aluno',$id)->first();
         $perfilaluno->periodo = $request->periodo;
-        $perfilaluno->idade = $request->idade;
         $perfilaluno->telefone = $request->telefone;
-        $perfilaluno->estado = $estado->estado;
-        $perfilaluno->cidade = $estado->cidade;
+        $perfilaluno->idade = $request->idade;
+        $perfilaluno->nacionalidade = $request->nacionalidade;
+        $perfilaluno->estado = $request->estado;
+        $perfilaluno->cidade = $request->cidade;
         $perfilaluno->bairro = $request->bairro;
+        $perfilaluno->rua = $request->rua;
+        $perfilaluno->numero = $request->numero;
+        if($request->idiomaptbr!=1)
+            $perfilaluno->idiomaptbr = 0;
+        if($request->idiomaptbr==1)
+            $perfilaluno->idiomaptbr = 1;
 
+        if($request->idiomaingles!=1)
+            $perfilaluno->idiomaingles = 0;
+        if($request->idiomaingles==1)
+            $perfilaluno->idiomaingles = 1;
 
-        return view('user.perfil.perfil', compact('user'));
+        if($request->idiomaespanhol!=1)
+            $perfilaluno->idiomaespanhol = 0;
+        if($request->idiomaespanhol==1)
+            $perfilaluno->idiomaespanhol = 1;
+
+        $perfilaluno->lattes = $request->lattes;
+        $perfilaluno->facebook = $request->facebook;
+        $perfilaluno->linkedin = $request->linkedin;
+        $perfilaluno->instagram = $request->instagram;
+        $perfilaluno->twitter = $request->twitter;
+        $perfilaluno->save();
+
+        return view('user.perfil.perfil', compact('user','perfilaluno'));
     }
 
     /**

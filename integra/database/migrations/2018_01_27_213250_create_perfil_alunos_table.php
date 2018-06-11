@@ -25,7 +25,9 @@ class CreatePerfilAlunosTable extends Migration
             $table->integer('numero')->default('0');
             $table->string('cidade')->default('');
             $table->string('estado')->default('');
-            $table->string('idiomas')->default('');
+            $table->string('idiomaptbr')->default('');
+            $table->string('idiomaingles')->default('');
+            $table->string('idiomaespanhol')->default('');
             $table->string('lattes')->default('');
             $table->string('facebook')->default('');
             $table->string('linkedin')->default('');

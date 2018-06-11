@@ -17,6 +17,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeUserController@index')->name('home');
 	Route::get('user/home/perfil', 'HomeUserController@perfilIndex')->name('user.home.perfil.index');
+	Route::post('user/home/perfil', 'HomeUserController@perfilIndexUpdate')->name('user.home.perfil.submit');
+
 });
 
 //rotas gerais
