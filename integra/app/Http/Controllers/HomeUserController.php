@@ -7,6 +7,8 @@ use Auth;
 use App\User;
 use Redirect;
 use App\PerfilAluno;
+use App\Habilidade;
+use App\UserHabilidade;
 
 class HomeUserController extends Controller
 {
@@ -83,6 +85,25 @@ class HomeUserController extends Controller
         $perfilaluno->save();
 
         return view('user.perfil.perfil', compact('user','perfilaluno'));
+    }
+
+    public function atuacaoIndex()
+    {
+        return view('user.profissional.atuacao');
+    }
+
+    public function cursosIndex()
+    {
+        return view('user.profissional.cursos');
+    }
+
+    public function habilidadesIndex()
+    {
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $habilidades = Habilidade::all();
+        $userhabilidades = UserHabilidade::where('id_aluno',$id)->paginate();
+        return view('user.profissional.habilidades', compact('habilidades','userhabilidades'));
     }
 
     /**

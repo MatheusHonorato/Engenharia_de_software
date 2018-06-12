@@ -88,9 +88,9 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profissional<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a tabindex="-1" href="{{ route('admin.home.cadastro.cursos.index') }}">Cursos</a></li>
-                <li><a tabindex="-1" href="{{ route('admin.home.cadastro.habilidades.index') }}">Habilidades</a></li>
-                <li><a href="#">Atuação</a></li>
+                <li><a tabindex="-1" href="{{ route('user.home.cursos') }}">Cursos</a></li>
+                <li><a tabindex="-1" href="{{ route('user.home.habilidades') }}">Habilidades</a></li>
+                <li><a href="{{ route('user.home.atuacao') }}">Atuação</a></li>
                 </li>
               </ul>
             </li>

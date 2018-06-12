@@ -18,7 +18,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeUserController@index')->name('home');
 	Route::get('user/home/perfil', 'HomeUserController@perfilIndex')->name('user.home.perfil.index');
 	Route::post('user/home/perfil', 'HomeUserController@perfilIndexUpdate')->name('user.home.perfil.submit');
-
+	Route::get('/user/home/atuacao', 'HomeUserController@atuacaoIndex')->name('user.home.atuacao');
+	Route::get('/user/home/cursos', 'HomeUserController@cursosIndex')->name('user.home.cursos');
+	Route::get('/user/home/habilidades', 'HomeUserController@habilidadesIndex')->name('user.home.habilidades');
 });
 
 //rotas gerais

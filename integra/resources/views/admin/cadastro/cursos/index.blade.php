@@ -99,7 +99,8 @@
                     <form action="{{ route('admin.home.cadastro.cursos.store') }}" method="POST" id="save">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">                            
                         <div class="form-group">
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Nome Curso" required="" autofocus="">
+                            <label>Nome do Curso</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Nome do Curso" required="" autofocus="">
                         </div>
                         <div class="form-group">
                             <label>Área</label>

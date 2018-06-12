@@ -72,7 +72,7 @@
                 <div class="modal-body">
                     <form action="{{ route('admin.home.cadastro.habilidades.store') }}" method="POST" id="save">
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">                            
-                        <input  class="form-control" placeholder="Nome Habilidade" name="name" type="text" required="required">
+                        <input  class="form-control" placeholder="Nome da Habilidade" name="name" type="text" required="required">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Sair</button>
