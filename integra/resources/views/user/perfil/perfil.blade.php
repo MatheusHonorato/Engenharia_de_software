@@ -13,6 +13,10 @@
             margin-left: 80%;
         }
     }
+
+    .required {
+        color: red;
+    }
 </style>
 
 
@@ -25,10 +29,10 @@
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Período</label>
+                            <label for="name" class="col-md-4 control-label">Período <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                              <select class="form-control" name="periodo">
+                              <select class="form-control" name="periodo" required>
                                 @for($i=1; $i<=12 ;$i++)
                                     @if($i==$perfilaluno->periodo)
                                         <option value="{{ $i }}" selected>{{ $i }}</option>
@@ -42,43 +46,43 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Telefone</label>
+                            <label for="name" class="col-md-4 control-label">Telefone<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="telefone" value="{{ $perfilaluno->telefone }}" placeholder="Telefone" onkeypress="mascara(this, '## #####-####')" maxlength="13">
+                                <input class="form-control" type="text" name="telefone" value="{{ $perfilaluno->telefone }}" placeholder="Telefone" onkeypress="mascara(this, '## #####-####')" maxlength="13" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Data de Nascimento</label>
+                            <label for="name" class="col-md-4 control-label">Data de Nascimento<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="date" name="nascimento" value="{{ $perfilaluno->nascimento }}">
+                                <input class="form-control" type="date" name="nascimento" value="{{ $perfilaluno->nascimento }}" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">CPF</label>
+                            <label for="name" class="col-md-4 control-label">CPF<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="cpf" value="{{ $perfilaluno->cpf }}" onkeypress="mascara(this, '###.###.###-##')" maxlength="14">
+                                <input class="form-control" type="text" name="cpf" value="{{ $perfilaluno->cpf }}" onkeypress="mascara(this, '###.###.###-##')" maxlength="14" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">RG</label>
+                            <label for="name" class="col-md-4 control-label">RG<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="rg" value="{{ $perfilaluno->rg }}" onkeypress="mascara(this, '##-##.###.###')" maxlength="13">
+                                <input class="form-control" type="text" name="rg" value="{{ $perfilaluno->rg }}" onkeypress="mascara(this, '##-##.###.###')" maxlength="13" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Sexo</label>
+                            <label for="name" class="col-md-4 control-label">Sexo<span class="required">*</span></label>
 
                             <div class="col-md-6">
 
-                                <select class="form-control" name="sexo">
+                                <select class="form-control" name="sexo" required>
                                     @if($perfilaluno->sexo == 0)
                                         <option value="0" selected>Masculino</option>
                                         <option value="1">Feminino</option>
@@ -101,10 +105,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Estado</label>
+                            <label for="state" class="col-md-4 control-label">Estado<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                              <select class="form-control" name="estado">
+                              <select class="form-control" name="estado" required>
                                 <option value="1">Minas Gerais</option>
                                 <option value="2">São Paulo</option>
                                 <option value="3">Rio de Janeiro</option>
@@ -113,36 +117,36 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Cidade</label>
+                            <label for="state" class="col-md-4 control-label">Cidade<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                              <select class="form-control" name="cidade">
+                              <select class="form-control" name="cidade" required>
                                 <option value="1">Montes Claros</option>
                               </select>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Bairro</label>
+                            <label for="state" class="col-md-4 control-label">Bairro<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" value="{{ $perfilaluno->bairro }}" placeholder="Bairro" name="bairro">
+                                <input type="text" class="form-control" value="{{ $perfilaluno->bairro }}" placeholder="Bairro" name="bairro" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Rua</label>
+                            <label for="state" class="col-md-4 control-label">Rua<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" value="{{ $perfilaluno->rua }}" placeholder="Rua" name="rua">
+                                <input type="text" class="form-control" value="{{ $perfilaluno->rua }}" placeholder="Rua" name="rua" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Numero</label>
+                            <label for="state" class="col-md-4 control-label">Numero<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" value="{{ $perfilaluno->numero }}" placeholder="Numero" name="numero">
+                                <input type="text" class="form-control" value="{{ $perfilaluno->numero }}" placeholder="Numero" name="numero" pattern="[0-9]+$" oninvalid="setCustomValidity('Este campo aceita apenas números')" required>
                             </div>
                         </div>                        
 

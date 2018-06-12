@@ -9,7 +9,7 @@
         color: #666;
   }
   #header-completo{
-    margin-top: 3em;
+    margin-top: 0em;
     background-color: white;
     border: none;
     padding-left: 3em;
@@ -51,7 +51,7 @@
 {
   #header-completo 
    {
-    margin-top: 10em;
+    margin-top: 0em;
     padding-left: 0em;
     padding-right: 0em;
    }
@@ -90,20 +90,6 @@ $(document).ready(function(){
           {{ session()->get('success') }}
       </div>
     @endif
-
-   
-
-    <nav class="navbar navbar navbar-fixed-top" id="top-header">
-      <div class="container-fluid">
-        <div class="navbar-header">
-            <ul class="nav navbar-nav col-md-12">
-              <li><a>Alunos</a></li>
-              <li><a>Empresas</a></li>
-              <li><a>Instituições</a></li>
-            </ul>
-        </div>
-      </div>
-    </nav>
 
     <nav class="navbar navbar-inverse navbar-fixed-top" id="header-completo">
       <div class="container-fluid">
