@@ -106,6 +106,24 @@ class HomeUserController extends Controller
         return view('user.profissional.habilidades', compact('habilidades','userhabilidades'));
     }
 
+
+    public function habilidadesStore(Request $request)
+    {
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $userHabilidades = UserHabilidade::where('id_habilidade',$request->id)->where('id_aluno',$id)->get();
+        $cUserHabilidades = count($userHabilidades);
+        if($cUserHabilidades==0){
+            $userHabilidad = new UserHabilidade;
+            $userHabilidad->id_aluno = $id;
+            $userHabilidad->id_habilidade = $request->id;
+            $userHabilidad->save();
+        }
+            
+        
+        return redirect()->route('user.home.habilidades');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

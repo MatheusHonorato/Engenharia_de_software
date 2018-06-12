@@ -21,6 +21,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/user/home/atuacao', 'HomeUserController@atuacaoIndex')->name('user.home.atuacao');
 	Route::get('/user/home/cursos', 'HomeUserController@cursosIndex')->name('user.home.cursos');
 	Route::get('/user/home/habilidades', 'HomeUserController@habilidadesIndex')->name('user.home.habilidades');
+	Route::post('/user/home/habilidades', 'HomeUserController@habilidadesStore')->name('home.cadastro.user.habilidades.store');
+
+
+	
 });
 
 //rotas gerais
