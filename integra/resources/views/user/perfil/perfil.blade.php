@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Cidade<span class="required">*</span></label>
+                            <label  class="col-md-4 control-label">Cidade<span class="required">*</span></label>
 
                             <div class="col-md-6">
                               <select class="form-control" name="cidade" required>
@@ -127,7 +127,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Bairro<span class="required">*</span></label>
+                            <label class="col-md-4 control-label">Bairro<span class="required">*</span></label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" value="{{ $perfilaluno->bairro }}" placeholder="Bairro" name="bairro" required>
@@ -135,18 +135,26 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Rua<span class="required">*</span></label>
+                            <label class="col-md-4 control-label">Logadouro<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" value="{{ $perfilaluno->rua }}" placeholder="Rua" name="rua" required>
+                                <input type="text" class="form-control" value="{{ $perfilaluno->logadouro }}" placeholder="Logadouro" name="logadouro" required>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="state" class="col-md-4 control-label">Numero<span class="required">*</span></label>
+                            <label class="col-md-4 control-label">Número<span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" value="{{ $perfilaluno->numero }}" placeholder="Numero" name="numero" pattern="[0-9]+$" oninvalid="setCustomValidity('Este campo aceita apenas números')" required>
+                                <input type="text" class="form-control" value="{{ $perfilaluno->numero }}" placeholder="Número" name="numero" pattern="[0-9]+$" oninvalid="setCustomValidity('Este campo aceita apenas números')" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state" class="col-md-4 control-label">Complemento</label>
+
+                            <div class="col-md-6">
+                                <input type="text" class="form-control" value="{{ $perfilaluno->complemento }}" placeholder="Complemento" name="complemento">
                             </div>
                         </div>                        
 

@@ -23,9 +23,10 @@ class CreatePerfilAlunosTable extends Migration
             $table->integer('periodo')->default('0');
             $table->string('telefone')->default('');
             $table->string('bairro')->default('');
-            $table->string('rua')->default('');
+            $table->string('logadouro')->default('');
             $table->string('nacionalidade')->default('');
             $table->integer('numero')->default('0');
+            $table->string('complemento')->default('');
             $table->string('cidade')->default('');
             $table->string('estado')->default('');
             $table->string('idiomaptbr')->default('');

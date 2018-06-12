@@ -56,8 +56,10 @@ class HomeUserController extends Controller
         $perfilaluno->estado = $request->estado;
         $perfilaluno->cidade = $request->cidade;
         $perfilaluno->bairro = $request->bairro;
-        $perfilaluno->rua = $request->rua;
+        $perfilaluno->logadouro = $request->logadouro;
         $perfilaluno->numero = $request->numero;
+        $perfilaluno->complemento = $request->complemento;
+
         if($request->idiomaptbr!=1)
             $perfilaluno->idiomaptbr = 0;
         if($request->idiomaptbr==1)
