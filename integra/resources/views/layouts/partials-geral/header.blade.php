@@ -19,7 +19,7 @@
     margin-top: 10em;
   }
   body{
-    padding-top: 10em;
+    padding-top: 0em;
   }
 
   .navbar-inverse .navbar-toggle{
@@ -56,14 +56,14 @@
     padding-left: 0em;
    }
    body{
-    padding-top: 10em;
+    padding-top: 0em;
     }
 }
 
 </style>
 <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top" id="header-completo">
+    <nav class="navbar navbar-default navbar-fixed-top" id="header-completo">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -72,7 +72,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{{ route('welcome') }}"><img src="/icones-aplicacao/Logo.png" style="max-width: 2em; margin-top: -0.5em;"><img src="/icones-aplicacao/Logo-name.png" style="max-width: 8em; margin-left: 2.5em;margin-top: -1.8em;"></a>
+          <a class="navbar-brand" href="{{ route('welcome') }}"><img src="{{ route('welcome') }}/icones-aplicacao/Logo.png" style="max-width: 2em; margin-top: -0.5em;"><img src="{{ route('welcome') }}/icones-aplicacao/Logo-name.png" style="max-width: 8em; margin-left: 2.5em;margin-top: -1.8em;"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav col-md-7">

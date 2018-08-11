@@ -1,29 +1,41 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 // rotas aluno
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function(){
 	Route::get('/home', 'HomeUserController@index')->name('home');
+	
+	Route::get('/user/home/matches', 'HomeUserController@matchIndex')->name('user.match');
+
+
 	Route::get('user/home/perfil', 'HomeUserController@perfilIndex')->name('user.home.perfil.index');
 	Route::post('user/home/perfil', 'HomeUserController@perfilIndexUpdate')->name('user.home.perfil.submit');
+
 	Route::get('/user/home/atuacao', 'HomeUserController@atuacaoIndex')->name('user.home.atuacao');
+	Route::post('/user/home/atuacao', 'HomeUserController@atuacaoStore')->name('home.cadastro.user.atuacao.store');
+	Route::post('user/home/atuacao/excluir', 'HomeUserController@atuacoesExcluir')->name('home.cadastro.atuacao.excluir');
+
+	Route::post('/user/home/atuacao/update', 'HomeUserController@atuacaoUpdate')->name('user.home.atuacao.update');
+
+
 	Route::get('/user/home/cursos', 'HomeUserController@cursosIndex')->name('user.home.cursos');
+	Route::post('/user/home/cursos', 'HomeUserController@cursosStore')->name('home.cadastro.user.cursos.store');
+	Route::post('/user/home/cursos/delete', 'HomeUserController@cursosExcluir')->name('home.cadastro.user.cursos.excluir');
+
+
 	Route::get('/user/home/habilidades', 'HomeUserController@habilidadesIndex')->name('user.home.habilidades');
 	Route::post('/user/home/habilidades', 'HomeUserController@habilidadesStore')->name('home.cadastro.user.habilidades.store');
+	Route::post('/user/home/habilidades/delete', 'HomeUserController@habilidadesExcluir')->name('home.cadastro.user.habilidades.excluir');
 
+	//Conhecimento
+	Route::get('user/home/conhecimentos', 'HomeUserController@conhecimentosIndex')->name('user.home.conhecimentos');
 
+	Route::post('user/home/conhecimentos', 'HomeUserController@conhecimentosStore')->name('home.cadastro.conhecimento.store');
+
+	Route::post('user/home/conhecimento/update', 'HomeUserController@conhecimentosUpdate')->name('admin.home.cadastro.conhecimentos.update');
+
+	Route::post('user/home/conhecimento/excluir', 'HomeUserController@conhecimentosExcluir')->name('home.cadastro.conhecimentos.excluir');
 	
 });
 
@@ -72,7 +84,7 @@ Route::group(['middleware' => 'admin_auth'], function(){
 	Route::post('admin/home/areas/update', 'Admin\HomeController@areasUpdate')->name('admin.home.cadastro.areas.update');
 
 
-	//perrfil
+	//perfil
 	Route::get('admin/home/perfil', 'Admin\HomeController@perfilIndex')->name('admin.home.perfil.index');
 	Route::post('admin/home/perfil', 'Admin\HomeController@perfilIndexUpdate')->name('admin.home.perfil.index.update');
 	//
@@ -118,6 +130,26 @@ Route::group(['middleware' => 'admin_auth'], function(){
 	//Estatísticas
 	Route::get('admin/home/estatisticas', 'Admin\HomeController@estatisticasIndex')->name('admin.home.esatisticas');
 
+	//Atuacoes
+	Route::get('admin/home/atuacoes/lista', 'Admin\HomeController@atuacoesIndex')->name('admin.home.cadastro.atuacoes.index');
+
+	Route::post('admin/home/atuacoes/store', 'Admin\HomeController@atuacoesStore')->name('admin.home.cadastro.atuacoes.store');
+
+	Route::post('admin/home/atuacoes/update', 'Admin\HomeController@atuacoesUpdate')->name('admin.home.cadastro.atuacoes.update');
+
+	Route::post('admin/home/atuacoes/excluir', 'Admin\HomeController@atuacoesExcluir')->name('admin.home.cadastro.atuacoes.excluir');
+
+	//Conhecimento
+	Route::get('admin/home/conhecimentos', 'Admin\HomeController@conhecimentosIndex')->name('admin.home.cadastro.conhecimentos.index');
+
+	Route::post('admin/home/conhecimentos', 'Admin\HomeController@conhecimentosStore')->name('admin.home.cadastro.conhecimentos.store');
+
+	Route::post('admin/home/conhecimento/update', 'Admin\HomeController@conhecimentosUpdate')->name('admin.home.cadastro.conhecimentos.update');
+
+	Route::post('admin/home/conhecimento/excluir', 'Admin\HomeController@conhecimentosExcluir')->name('admin.home.cadastro.conhecimentos.excluir');
+
+	//Matches
+	Route::get('admin/home/matches', 'Admin\HomeController@matchIndex')->name('admin.home.match.index');
 });
 //
 
@@ -132,9 +164,14 @@ Route::group(['middleware' => 'emp_guest'], function() {
 
 Route::group(['middleware' => 'emp_auth'], function(){
 	Route::post('emp/logout', 'EmpAuth\LoginController@logout')->name('emp.logout');
-	Route::get('emp/home', function(){
-	  return view('emp.home');
-	});
+	
+	Route::get('emp/home', 'Emp\HomeController@index')->name('emp.home');
+	Route::get('emp/home/perfil', 'Emp\HomeController@perfilIndex')->name('emp.home.perfil.index');
+	Route::post('emp/home/perfil', 'Emp\HomeController@perfilIndexUpdate')->name('emp.home.perfil.submit');
+
+	Route::get('emp/oportunidades', 'Emp\HomeController@oportunidadesIndex')->name('emp.home.oportunidades.index');
+	Route::post('emp/oportunidades', 'Emp\HomeController@oportunidadesStore')->name('emp.home.oportunidades.store');
+	Route::post('emp/match', 'Emp\HomeController@matchIndex')->name('emp.home.match.index');
 });
 //
 

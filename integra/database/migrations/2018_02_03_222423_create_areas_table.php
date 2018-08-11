@@ -17,6 +17,7 @@ class CreateAreasTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('amount');
+            $table->integer('status');
             $table->timestamps();
         });
     }

@@ -42,10 +42,10 @@
                                     <tr>
                                         <td>{{ $habilidade->name }}</td>
                                         <td>
-                                            <form action="{{ route('admin.home.cadastro.habilidades.excluir') }}" method="POST">
+                                            <form action="{{ route('home.cadastro.user.habilidades.excluir') }}" method="POST">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <input type="hidden" name="id" value="{{ $habilidade->id }}">
-                                                <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                                                <input type="hidden" name="id" value="{{ $userhabilidade->id }}">
+                                                <button type="submit" onclick="return confirm('Deseja realmente executar esta ação?')" class="btn btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
                                             </form>
                                         </td>
                                     </tr>
@@ -67,7 +67,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-                    <h4 class="modal-title">Escolha uma Habilidade</h4>
+                    <h4 class="modal-title">Escolha Suas Habilidades</h4>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('home.cadastro.user.habilidades.store') }}" method="POST" id="save">

@@ -17,10 +17,8 @@ class CreateMatchesTable extends Migration
             $table->increments('id');
 
             $table->unsignedInteger('id_aluno');
-            $table->foreign('id_aluno')->references('id')->on('users')->onDelete('cascade');
-
-            $table->unsignedInteger('id_empresa');
-            $table->foreign('id_empresa')->references('id')->on('emps')->onDelete('cascade');
+            
+            $table->unsignedInteger('id_oportunidade');
             
             $table->timestamps();
         });

@@ -1,8 +1,31 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
+
+<style type="text/css">
+    @media (max-width: 768px){
+
+    .panel {
+
+        margin-top: 35% !important;
+
+    }
+
+}
+
+    @media (min-width: 800px){
+
+    .panel {
+
+        margin-top: 20% !important;
+
+    }
+
+}
+
+}
+</style>
+
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Aluno</div>
@@ -55,15 +78,11 @@
                                     Entrar
                                 </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Esqueceu sua senha?
-                                </a>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+  
 @endsection

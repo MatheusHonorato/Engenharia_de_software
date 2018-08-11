@@ -9,6 +9,17 @@ use Redirect;
 use App\PerfilAluno;
 use App\Habilidade;
 use App\UserHabilidade;
+use App\Curso;
+use App\UserCurso;
+use App\Atuacao;
+use App\UserAtuacao;
+use App\Conhecimento;
+use App\UserConhecimento;
+use App\Tipo;
+use App\Area;
+use App\Match;
+use App\Emp;
+use App\Oportunidade;
 
 class HomeUserController extends Controller
 {
@@ -89,12 +100,88 @@ class HomeUserController extends Controller
 
     public function atuacaoIndex()
     {
-        return view('user.profissional.atuacao');
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $atuacoes = Atuacao::all();
+        $useratuacoes = UserAtuacao::where('id_aluno',$id)->paginate(5);
+        return view('user.profissional.atuacao',compact('atuacoes','useratuacoes'));
+    }
+
+    public function atuacaoStore(Request $request)
+    {
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+       
+            $userAtuacaod = new UserAtuacao;
+            $userAtuacaod->id_aluno = $id;
+            $userAtuacaod->id_atuacao = $request->id;
+            $userAtuacaod->desc = '';
+            $userAtuacaod->save();
+    
+            
+        
+        return redirect()->route('user.home.atuacao');
+    }
+
+    public function atuacaoUpdate(Request $request)
+    {
+        $userAtuacao = UserAtuacao::find($request->id);
+        $userAtuacao->desc = $request->desc;
+        $userAtuacao->save();
+
+        return redirect()->route('user.home.atuacao');
+    }
+
+    public function atuacoesExcluir(Request $request)
+    {
+        
+        $uatuacao = UserAtuacao::find($request->id);
+        $uatuacao->delete();
+        
+        return redirect()->route('user.home.atuacao');
     }
 
     public function cursosIndex()
     {
-        return view('user.profissional.cursos');
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $cursos = Curso::all();
+        $tipos = Tipo::all();
+        $areas = Area::all();
+        $usercursos = UserCurso::where('id_aluno',$id)->paginate(5);
+        return view('user.profissional.cursos', compact('cursos','usercursos','tipos','areas'));
+    }
+
+    public function cursosStore(Request $request)
+    {
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $userCursos = UserCurso::where('id_curso',$request->id)->where('id_aluno',$id)->get();
+        $cUserCursos = count($userCursos);
+        if($cUserCursos==0){
+            $userCursod = new UserCurso;
+            $userCursod->id_aluno = $id;
+            $userCursod->id_curso = $request->id;
+            $userCursod->save();
+
+            $curso = Curso::find($request->id);
+            $areac = $curso->id_area;
+            $area = Area::find($areac);
+            $area->amount++;
+            $area->save();
+        }
+
+            
+        return redirect()->route('user.home.cursos');
+    }
+
+     public function cursosExcluir(Request $request)
+    {
+        
+        $ucurso = UserCurso::find($request->id);
+        $ucurso->delete();
+        
+        return redirect()->route('user.home.cursos');
     }
 
     public function habilidadesIndex()
@@ -118,75 +205,72 @@ class HomeUserController extends Controller
             $userHabilidad->id_aluno = $id;
             $userHabilidad->id_habilidade = $request->id;
             $userHabilidad->save();
+
+            $habilidade = Habilidade::find($request->id);
+            $habilidade->amount++;
+            $habilidade->save();
         }
             
         
         return redirect()->route('user.home.habilidades');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function habilidadesExcluir(Request $request)
     {
-        //
+        $uhabilidade = UserHabilidade::find($request->id);
+        $uhabilidade->delete();
+        
+        return redirect()->route('user.home.habilidades');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    //conhecimentos
+     public function conhecimentosIndex()
     {
-        //
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $conhecimentos = Conhecimento::where('status',1)->paginate(5);
+        $userconhecimentos = UserConhecimento::where('id_aluno',$id)->paginate(5);
+        return view('user.profissional.conhecimento', compact('conhecimentos','userconhecimentos'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function conhecimentosStore(Request $request)
     {
-        //
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $userConhecimentos = UserConhecimento::where('id_conhecimento',$request->id)->where('id_aluno',$id)->get();
+        $cUserConhecimentos = count($userConhecimentos);
+        if($cUserConhecimentos==0){
+            $userConhecimentod = new UserConhecimento;
+            $userConhecimentod->id_aluno = $id;
+            $userConhecimentod->id_conhecimento = $request->id;
+            $userConhecimentod->save();
+        }
+            
+        
+        return redirect()->route('user.home.conhecimentos');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function conhecimentosExcluir(Request $request)
     {
-        //
+        
+        $uconhecimento = UserConhecimento::find($request->id);
+        $uconhecimento->delete();
+        
+        return redirect()->route('user.home.conhecimentos');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+     public function matchIndex()
     {
-        //
+        $var = Auth::guard('web')->user()->makeVisible('attribute')->toArray();
+        $id = $var['id'];
+        $matches = Match::where('id_aluno',$id)->paginate(3);
+        $empresas = Emp::all();
+        $oportunidades = Oportunidade::all();
+
+        return view('user.matches.index', compact('matches','empresas','oportunidades'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

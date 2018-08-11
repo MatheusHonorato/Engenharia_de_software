@@ -1,8 +1,44 @@
 @extends('layouts.app')
+
 @section('content')
+
+<style type="text/css">
+    @media (max-width: 768px){
+
+    .panel {
+
+        margin-top: 35% !important;
+
+    }
+
+}
+
+    @media (min-width: 800px){
+
+    .panel {
+
+        margin-top: 20% !important;
+
+    }
+
+}
+
+
+ @media (max-width: 400px){
+
+  footer {
+  bottom: -110px !important;
+}
+
+}
+
+
+}
+</style>
+
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Cadastro</div>
+                <div class="panel-heading">Cadastro - Aluno</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -73,7 +109,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-default">
+                                <button type="submit" class="btn btn-primary">
                                     Concluir
                                 </button>
                             </div>
