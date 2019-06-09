@@ -1,4 +1,4 @@
-# engenharia_de_software
+# Engenharia de Software II
 Sistema web desenvolvido na disciplina de engenharia de software II.
 O sistema desenvolvido aproxima universidades, empresas e alunos.
 
@@ -7,6 +7,7 @@ Funcionalidades:
   - Cadastros: Categorias, Habilidades, Cursos.
   - Filtros de busca.
   - Funcionalidade de Match: Um envio de e-mail é realizado quando alunos e empresas ou universidades cruzam interesses.
+  
 Tecnologias utilizadas:
   Front-End:
     - HTML5
