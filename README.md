@@ -8,13 +8,24 @@ Funcionalidades:
   - Filtros de busca.
   - Funcionalidade de Match: Um envio de e-mail é realizado quando alunos e empresas ou universidades cruzam interesses.
   
+  
 Tecnologias utilizadas:
+
+
   Front-End:
+  
     - HTML5
+    
     - CSS3
+    
     - Javascript
+    
     - Bootstrap
+    
    Back-end:
+   
     - PHP 7
+    
     - MYSQL
+    
     - Laravel
